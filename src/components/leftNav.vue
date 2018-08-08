@@ -42,18 +42,30 @@
                 <el-submenu index="2">
                   <template slot="title">
                     <i class="el-icon-menu"></i>
-                    <span slot="title">认证审核</span>
+                    <span slot="title">认证审核1</span>
                   </template>
                   <el-menu-item-group>
-                    <el-menu-item index="2-1">账号管理</el-menu-item>
-                    <el-menu-item index="2-2">服务需求方</el-menu-item>
-                    <el-menu-item index="2-3">服务供应方</el-menu-item>
+                    <el-menu-item index="2-1"><router-link to="/news1">认证审核1</router-link></el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="3" disabled>
-                  <i class="el-icon-document"></i>
-                  <span slot="title">导航三</span>
-                </el-menu-item>
+                <el-submenu index="3">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">认证审核2</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="3-1"><router-link to="/news2">认证审核2</router-link></el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="4">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">认证审核3</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="4-1"><router-link to="/news3">认证审核3</router-link></el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
                 <el-menu-item index="4">
                   <i class="el-icon-setting"></i>
                   <span slot="title">导航四</span>
