@@ -1,0 +1,37 @@
+
+------------vuex----------------------------------------------------------------
+https://segmentfault.com/a/1190000009404727#articleHeader5
+配置之后使用：
+$store.state.dialog.show用来获得状态
+使用 $store.commit('switch_dialog') 来触发 mutations 中的 switch_dialog 方法
+mutations 中的方法是不分组件的 ,mutations里的操作必须是同步的。只是官方推荐 , 不要在 mutationss 里执行异步操作而已。
+
+多个 state 的操作 , 使用 mutations 会来触发会比较好维护 , 那么需要执行多个 mutations 就需要用 action 了。官方推荐 , 将异步操作放在 action 中。
+$store.dispatch('switch_dialog')  来触发 actions 里的 switch_dialog 方法
+***********最好方法名是独一无二的，因为他会执行所有的当前的方法*********
+
+$store.getters.not_show 来获得状态 not_show 。
+那么 , 如果很多很多个组件中都需要用到这个与 show 刚好相反的状态 , 那么我们需要写很多很多个 not_show , 使用 getters 就可以解决这种问题 :
+注意 : $store.getters.not_show 的值是不能直接修改的 , 需要对应的 state 发生变化才能修改。
+
+为了方便起见：使用mapState、mapGetters、mapActions 就不会这么复杂了
+mapGetters 一般也写在 computed 中 , mapActions 一般写在 methods 中。
+
+例：
+    <template>
+      <el-dialog :visible.sync="show"></el-dialog>
+    </template>
+
+    <script>
+      import {mapState} from 'vuex';
+      export default {
+        computed:{
+
+          //这里的三点叫做 : 扩展运算符
+          ...mapState({
+            show:state=>state.dialog.show
+          }),
+        }
+      }
+    </script>
+-------------------------------------------------------------------------------
