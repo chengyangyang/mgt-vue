@@ -126,4 +126,7 @@ export default {
 .el-submenu .el-menu-item{
   min-width: 0px !important;
 }
+.el-menu-item-group__title{
+  padding: 0 0 0 20px !important;
+}
 </style>
