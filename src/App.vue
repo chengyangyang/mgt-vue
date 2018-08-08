@@ -14,6 +14,7 @@ export default {
 
 <style lang="less">
 #app {
-
+  height: 100%!important;
+  min-width: 1200px;
 }
 </style>
