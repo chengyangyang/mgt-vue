@@ -8,7 +8,7 @@
     </p>
     <div class="tableWrap">
       <div class="tableBox">
-        <p style="padding: 5px 0;border-bottom: 1px solid rgb(241,241,241)">
+        <p style="padding: 10px 0;border-bottom: 1px solid rgb(241,241,241)">
           <el-button type="primary" size="small" icon="el-icon-plus">添加新闻资讯</el-button>
         </p>
         <div class="searchBar">
@@ -48,47 +48,118 @@
                 end-placeholder="结束日期">
               </el-date-picker>
             </div>
-            <el-button type="primary" size="small">搜索</el-button>
+            <el-button type="primary" size="small" @click="selectList">搜索</el-button>
         </div>
+        <div class="table">
+          <el-table
+            :data="newsListShow" border
+            style="width: 100%" class="newsTable">
+            <el-table-column
+              type="index"
+              width="70" header-align="center"
+            label="序号">
+            </el-table-column>
+            <el-table-column
+              property="title"
+              width="170" header-align="center"
+              label="标题"  prop="title">
+            </el-table-column>
+            <el-table-column
+              property="title"
+              width="130" header-align="center"
+              label="发布单位"  prop="publishUnit">
+            </el-table-column>
+            <el-table-column
+              property="title"
+              width="120" header-align="center"
+              label="类型"  prop="type" :formatter="formatter">
+            </el-table-column>
+            <el-table-column
+              property="title"
+              width="100" header-align="center"
+              label="是否发布"  prop="isPublish">
+            </el-table-column>
+            <el-table-column
+              property="title"
+              width="120" header-align="center"
+              label="发布时间"  prop="publishTime">
+            </el-table-column>
+            <el-table-column label="操作" header-align="center">
+              <template slot-scope="scope">
+                <el-button
+                  size="mini"
+                  @click="handleCheck(scope.$index, scope.row)">查看</el-button>
+                <el-button
+                  size="mini"
+                  @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                <el-button
+                  size="mini"
+                  type="danger"
+                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+        <!--分页-->
+          <pageNation  ref="myChid" :resourceUrl="resourceUrl" :searchData="searchData" @askData="listData"></pageNation>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import pageNation from '@/components/pageNation'   // 分页组件
   export default {
     name:"news2",
     data(){
       return{
-        searchData:{
-          title:"",
-          publishUnit:"",
-          type:"",
-          startData:"",
-          endData:""
-        },
-        value4: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
+        searchData:{title:"", publishUnit:"", type:"", startData:"", endData:""},
+        value4: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],   // 时间初始化
+        typeData1:{"1":"新闻中心","2":"通知公告","3":"政策扶持","4":"知识产权法规"},
         typeData: [{
-          value: '0',
+          value: '1',
           label: '新闻中心'
         }, {
-          value: '1',
+          value: '2',
           label: '通知公告'
         }, {
-          value: '2',
+          value: '3',
           label: '政策扶持'
         }, {
-          value: '3',
+          value: '4',
           label: '知识产权法规'
-        }],
-        type: ''
+        }],  // 文章类型
+        type: '',    //文章类型
+        newsListShow:"",             //列表总数据
+        resourceUrl:{url:"/newsList"},
       }
     },
     components:{
+        pageNation
     },
     mounted(){
     },
     methods:{
+      handleCheck(index, row) {
+        console.log(index, row);
+      },
+      handleEdit(index, row) {
+        console.log(index, row);
+      },
+      handleDelete(index, row) {
+        console.log(index, row);
+      },
+      //类型判断
+      formatter(row, column,cellValue,index) {
+        return cellValue = this.typeData1[cellValue];
+      },
+      //列表数据
+      listData(data){
+        this.newsListShow = data;
+      },
+      selectList(){
+        this.$refs.myChid.setNewsApi();
+      }
     }
   }
 </script>
@@ -96,7 +167,7 @@
 <style lang="less">
   #news2{
     .tableWrap{
-      padding: 10px 20px;
+      padding: 10px 15px;
       .tableBox{
         background: #fff;
         padding: 0 20px;
@@ -106,14 +177,28 @@
           padding: 15px 0;
           .inputDiv{
             display: inline-block;
-            margin: 5px 10px  ;
+            margin: 5px;
             /*margin-left: 10px !important;*/
           }
         }
+      .newsTable{
+        th{
+          padding: 3px 0.5rem!important;
+        }
+        td{
+          padding: 3px 0.5rem!important;
+        }
+      }
       }
     }
   }
   .el-input{
     width: 75% !important;
+  }
+  .block{
+    margin: 20px 0;
+  }
+  .el-pagination{
+    padding-left: 280px !important;
   }
 </style>
