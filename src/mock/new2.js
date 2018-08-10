@@ -15,14 +15,19 @@ for (let i = 0; i < 30; i++) {
   }
   articles.push(newArticleObject)
 }
+var totalPageNum = articles.length
 // mock一组数据
 const newsListData = function (opt) {
   var page = JSON.parse(opt.body).page
   var pageNumber = JSON.parse(opt.body).pageNumber
   var newArticles = articles.slice((page - 1) * pageNumber, page * pageNumber)
+  if (JSON.parse(opt.body).title) {
+    newArticles = newArticles.filter(item => item.title === JSON.parse(opt.body).title)
+    totalPageNum = newArticles.length
+  }
   return {
     data: newArticles,
-    totalPage: articles.length
+    totalPage: totalPageNum
   }
 }
 Mock.mock('/newsList', /post|get/i, newsListData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
