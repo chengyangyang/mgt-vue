@@ -12,12 +12,11 @@ var data = Mock.mock({
   }]
 })
 // 输出结果
-console.log(JSON.stringify(data, null, 4))
+// console.log(JSON.stringify(data, null, 4))
 // 获取 mock.Random 对象
 const Random = Mock.Random
 // mock一组数据
 const produceData = function (opt) {
-  console.log('opt', opt)
   let articles = []
   for (let i = 0; i < 30; i++) {
     let newArticleObject = {
