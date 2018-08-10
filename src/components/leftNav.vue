@@ -72,7 +72,7 @@
                 </el-menu-item>
               </el-menu>
             </el-col>
-            <el-col :span="20" style="height: 100%">
+            <el-col :span="20" style="height: 100%;overflow: scroll">
               <router-view/>
             </el-col>
         </el-row>
@@ -110,12 +110,14 @@ export default {
   background-repeat: repeat-y;
   background-position: top center;
   position:absolute;
+  overflow-y: scroll;
   .headerWrap{
-    padding: 40px 25px 0px 25px;
+    padding: 40px 25px 40px 25px;
     height:100%;
     .tac{
       background: rgb(237,240,245);
       height:100%;
+      min-height: 950px;
       margin-top:3px;
       .leftNav{
         height: 100%;
