@@ -9,7 +9,7 @@
     <div class="tableWrap">
       <div class="tableBox">
         <p style="padding: 10px 0;border-bottom: 1px solid rgb(241,241,241)">
-          <el-button type="primary" size="small" icon="el-icon-plus">添加新闻资讯</el-button>
+          <el-button type="primary" size="small" icon="el-icon-plus" @click="addNews">添加新闻资讯</el-button>
         </p>
         <div class="searchBar">
             <div class="inputDiv">
@@ -159,6 +159,9 @@
       },
       selectList(){
         this.$refs.myChid.setNewsApi();
+      },
+      addNews(){
+        this.$router.push("/newsAdd");
       }
     }
   }
