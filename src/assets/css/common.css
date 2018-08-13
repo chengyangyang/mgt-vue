@@ -15,10 +15,10 @@ a{
   float: right;
 }
 .clearFix:after {clear: both;display: block;content: "";height: 0;visibility: hidden;}
-.container{
-  width: 1200px;
-  margin: 0px auto;
-}
+/*.container{*/
+  /*width: 1200px;*/
+  /*margin: 0px auto;*/
+/*}*/
 .m-t10{
   margin-top: 10px;
 }
