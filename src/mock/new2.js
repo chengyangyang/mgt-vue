@@ -10,7 +10,7 @@ for (let i = 0; i < 30; i++) {
     title: Random.ctitle(3, 5),
     publishUnit: Random.cword(5),
     type: Random.integer(1, 4), // Random.integer随机生成0和1
-    isPublish: Random.integer(0, 1), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    isPublish: Random.boolean(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
     publishTime: Random.date()
   }
   articles.push(newArticleObject)
