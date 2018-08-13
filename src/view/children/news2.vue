@@ -78,12 +78,26 @@
               property="title"
               width="100" header-align="center"
               label="是否发布"  prop="isPublish">
+              <template slot-scope="scope">
+                <el-switch
+                  v-model="scope.row.isPublish" @change="test(scope.row)">
+                </el-switch>
+                <!--<el-tag-->
+                  <!--:type="scope.row.isPublish === '1' ? 'checked' : ''"-->
+                  <!--disable-transitions>{{scope.row.isPublish}}</el-tag>-->
+              </template>
             </el-table-column>
+            <!--<el-table-column-->
+              <!--property="title"-->
+              <!--width="100" header-align="center"-->
+              <!--label="是否发布"  prop="isPublish">-->
+            <!--</el-table-column>-->
             <el-table-column
               property="title"
               width="120" header-align="center"
               label="发布时间"  prop="publishTime">
             </el-table-column>
+
             <el-table-column label="操作" header-align="center">
               <template slot-scope="scope">
                 <el-button
@@ -95,7 +109,7 @@
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                  @click="handleDelete(scope.$index, scope.row)" @click.native.prevent="deleteRow(scope.$index, tableData4)">删除</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -113,6 +127,7 @@
     name:"news2",
     data(){
       return{
+        value6:true,
         searchData:{title:"", publishUnit:"", type:"", startData:"", endData:""},
         value4: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],   // 时间初始化
         typeData1:{"1":"新闻中心","2":"通知公告","3":"政策扶持","4":"知识产权法规"},
@@ -141,13 +156,16 @@
     },
     methods:{
       handleCheck(index, row) {
-        console.log(index, row);
+        this.$router.push("/newsAdd")
       },
       handleEdit(index, row) {
-        console.log(index, row);
+        this.$router.push("/newsAdd")
       },
       handleDelete(index, row) {
-        console.log(index, row);
+        this.newsListShow.slice(index,1);
+      },
+      deleteRow(index, rows) {
+        rows.splice(index, 1);
       },
       //类型判断
       formatter(row, column,cellValue,index) {
@@ -162,6 +180,10 @@
       },
       addNews(){
         this.$router.push("/newsAdd");
+      },
+      //是否发布
+      test(row){
+        console.log(row.isPublish);
       }
     }
   }
