@@ -25,7 +25,6 @@ export default {
   methods:{
     setNewsApi: function() {
       this.$http.post("/news", "type=top&key=123456").then(res => {
-        console.log(res.data);
         this.newsListShow = res.data.data;
       });
     }

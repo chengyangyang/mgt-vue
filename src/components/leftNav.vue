@@ -13,6 +13,14 @@
                   <span style="padding: 0 15px">你好！admin</span>
                   <span> | </span>
                   <span style="padding: 0px 8px;">后台首页</span>
+                  <div class="fr" style="display: inline-block">
+                    <div class="btn-fullscreen fl" @click="handleFullScreen" style="display:inline-block;margin-right: 10px">
+                      <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
+                        <i class="el-icon-rank"></i>
+                      </el-tooltip>
+                    </div>
+                    <span class="fr loginout"  @click="loginout">退出登录</span>
+                  </div>
                 </div>
               </el-col>
           </div>
@@ -95,6 +103,37 @@ export default {
     // handleClose(key, keyPath) {
     //   console.log(key, keyPath);
     // }
+    loginout(){
+      localStorage.removeItem('ms_username')
+      this.$router.push('/login');
+    },
+    // 全屏事件
+    handleFullScreen(){
+      let element = document.documentElement;
+      if (this.fullscreen) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      } else {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) {
+          // IE11
+          element.msRequestFullscreen();
+        }
+      }
+      this.fullscreen = !this.fullscreen;
+    }
   },
   mounted(){
   }
@@ -131,4 +170,22 @@ export default {
 .el-menu-item-group__title{
   padding: 0 0 0 20px !important;
 }
+  .loginout{
+    cursor: pointer;
+    border: 2px solid  rgb(5,11,254);
+    color:  rgb(5,11,254);
+    margin-right: 15px;
+    display: inline-block;
+    width: 60px;
+    line-height: 33px;
+    height: 33px;
+    text-align: center;
+    margin-top: 11px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  .loginout:hover{
+    background: rgb(5,11,254);
+    color: #ffffff;
+  }
 </style>

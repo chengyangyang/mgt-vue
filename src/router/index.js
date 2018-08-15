@@ -18,10 +18,10 @@ export default new Router({
       path: '/leftNav',
       name: 'leftNav',
       component: leftNav,
-      redirect: '/index',
+      redirect: '/',
       children: [
         {
-          path: '/index',
+          path: '/',
           name: 'index',
           component: index
         },
@@ -44,11 +44,17 @@ export default new Router({
           path: '/news3',
           name: 'news3',
           component: news3
+        },
+        {
+          // 权限页面
+          path: '/permission',
+          component: resolve => require(['../view/children/Permission.vue'], resolve),
+          meta: { title: '权限测试', permission: true }
         }
       ]
     },
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: login
     }
