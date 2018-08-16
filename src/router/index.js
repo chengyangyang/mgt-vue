@@ -10,12 +10,12 @@ const accountManagement = r => require.ensure([], () => r(require('@/view/childr
 const serviceDemand = r => require.ensure([], () => r(require('@/view/children/certificationAudit/serviceDemand')), 'serviceDemand')
 const serviceProvide = r => require.ensure([], () => r(require('@/view/children/certificationAudit/serviceProvide')), 'serviceProvide')
 
-const alliance = r => require.ensure([], () => r(require('@/view/children/alliance/alliance')), 'alliance') //联盟管理
-const joinSrchlist = r => require.ensure([], () => r(require('@/view/children/alliance/joinSrchlist')), 'joinSrchlist') //加盟机构
-const demandManagement = r => require.ensure([], () => r(require('@/view/children/demandManagement/demandManagement')), 'demandManagement') //需求项目审核
-const bidManagement = r => require.ensure([], () => r(require('@/view/children/bidManagement/bidManagement')), 'bidManagement') //竞价项目审核
-const caseManagement = r => require.ensure([], () => r(require('@/view/children/caseManagement/caseManagement')), 'caseManagement') //服务案例审核
-const contract = r => require.ensure([], () => r(require('@/view/children/contract/contract')), 'contract') //合同备案审核
+const alliance = r => require.ensure([], () => r(require('@/view/children/alliance/alliance')), 'alliance') // 联盟管理
+const joinSrchlist = r => require.ensure([], () => r(require('@/view/children/alliance/joinSrchlist')), 'joinSrchlist') // 加盟机构
+const demandManagement = r => require.ensure([], () => r(require('@/view/children/demandManagement/demandManagement')), 'demandManagement') // 需求项目审核
+const bidManagement = r => require.ensure([], () => r(require('@/view/children/bidManagement/bidManagement')), 'bidManagement') // 竞价项目审核
+const caseManagement = r => require.ensure([], () => r(require('@/view/children/caseManagement/caseManagement')), 'caseManagement') // 服务案例审核
+const contract = r => require.ensure([], () => r(require('@/view/children/contract/contract')), 'contract') // 合同备案审核
 
 const news2 = r => require.ensure([], () => r(require('@/view/children/consultingMangement/news2')), 'news2')
 const newsAdd = r => require.ensure([], () => r(require('@/view/children/consultingMangement/newsAdd')), 'newsAdd')
@@ -68,32 +68,32 @@ export default new Router({
           component: newsAdd
         },
         {
-          path: '/alliance', //联盟管理
+          path: '/alliance', // 联盟管理
           name: 'alliance',
           component: alliance
         },
         {
-          path: '/joinSrchlist',//加盟机构
+          path: '/joinSrchlist',// 加盟机构
           name: 'joinSrchlist',
           component: joinSrchlist
         },
         {
-          path: '/demandManagement', //需求项目审核
+          path: '/demandManagement', // 需求项目审核
           name: 'demandManagement',
           component: demandManagement
         },
         {
-          path: '/bidManagement', //竞价项目审核
+          path: '/bidManagement', // 竞价项目审核
           name: 'bidManagement',
           component: bidManagement
         },
         {
-          path: '/caseManagement', //服务案例审核
+          path: '/caseManagement', // 服务案例审核
           name: 'caseManagement',
           component: caseManagement
         },
         {
-          path: '/contract', //合同备案审核
+          path: '/contract', // 合同备案审核
           name: 'contract',
           component: contract
         },
