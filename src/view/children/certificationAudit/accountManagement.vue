@@ -10,7 +10,7 @@
       <div class="tableBox">
         <div class="searchBar">
           <div class="inputDiv">
-            <label>标题:</label>
+            <label>用户名:</label>
             <el-input
               placeholder="用户名"
               v-model="searchData.userName">
@@ -52,7 +52,7 @@
 
             <label>注册时间:</label>
             <el-date-picker
-              v-model="value4"
+              v-model="searchData.registTime"
               type="datetimerange"
               range-separator="至"
               start-placeholder="开始日期"
@@ -107,14 +107,14 @@
               <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleCheck(scope.$index, scope.row)">冻结</el-button>
+                  @click="fozen(scope.$index, scope.row,0)">冻结</el-button>
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">解冻</el-button>
+                  @click="fozen(scope.$index, scope.row,1)">解冻</el-button>
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)" @click.native.prevent="handleDelete(scope.$index, tableData4)">查看</el-button>
+                  @click="handleCheck(scope.$index, scope.row)">查看</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -125,7 +125,7 @@
     </div>
     <!-- 删除提示框 -->
     <el-dialog title="提示" :visible.sync="delVisible" width="300px" center>
-      <div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>
+      <div class="del-dialog-cnt">{{confirmData}}</div>
       <span slot="footer" class="dialog-footer">
                 <el-button @click="delVisible = false">取 消</el-button>
                 <el-button type="primary" @click="deleteRow">确 定</el-button>
@@ -142,7 +142,8 @@
       return{
         delVisible: false,
         value6:true,
-        searchData:{userName:"", companyName:"", companyCode:"", phoneNumber:"", type:""}, // 搜索框
+        confirmData:"您确定要进行冻结操作吗",
+        searchData:{userName:"", companyName:"", companyCode:"", phoneNumber:"", type:"",registStartTime:"",registEndTime:""}, // 搜索框
         value4: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],   // 时间初始化
         typeData1:{"1":"服务需求方","2":"服务供应方"},
         typeData: [{
@@ -164,11 +165,8 @@
     },
     methods:{
       handleCheck(index, row) {
-        this.$router.push("/newsAdd")
-      },
-      handleEdit(index, row) {
         var id = index;
-        this.$router.push({ name:"newsAdd",params:{ id: index}})
+        this.$router.push({ name:"accountView",params:{ companyName: row.companyName,companyCode:row.companyCode}})
       },
       //类型判断
       formatter(row, column,cellValue,index) {
@@ -181,27 +179,44 @@
       },
       //列表数据
       listData(data){
-        console.log(data);
         this.newsListShow = data;
       },
       selectList(){
+        this.searchData.registStartTime = this.timeDelete(this.searchData.registTime[0]);
+        this.searchData.registEndTime = this.timeDelete(this.searchData.registTime[1]);
         this.$refs.myChid.setNewsApi();
       },
       addNews(){
         this.$router.push("/newsAdd");
       },
-      handleDelete(index, row) {
+      fozen(index, row,data) {
+        if(data == 1){
+          this.confirmData = "您确定要进行解冻操作吗?";
+        }else{
+          this.confirmData = "您确定要进行冻结操作吗?";
+        }
         this.idx = index;
         this.delVisible = true;
       },
       deleteRow(){
-        this.newsListShow.splice(this.idx, 1);
-        this.$message.success('删除成功');
+        this.$message.success('操作成功');
         this.delVisible = false;
       },
       //是否发布
       test(row){
         console.log(row.isPublish);
+      },
+    //  获取时间
+      timeDelete(datetime){
+        var year = datetime.getFullYear();
+        var month = datetime.getMonth()+1 < 10 ? "0"+ eval(datetime.getMonth()+1):eval(datetime.getMonth()+1);//js从0开始取
+        var date = datetime.getDate() < 10 ? "0"+ datetime.getDate():datetime.getDate();
+        var hour = datetime.getHours()< 10 ? "0"+ datetime.getHours():datetime.getHours();
+        var minutes = datetime.getMinutes()< 10 ? "0"+ datetime.getMinutes():datetime.getMinutes();
+        var second = datetime.getSeconds()< 10 ? "0"+ datetime.getSeconds():datetime.getSeconds();
+
+        var time = year+"-"+month+"-"+date+" "+hour+":"+minutes+":"+second; //2009-06-12 17:18:05
+        return time;
       }
     }
   }
