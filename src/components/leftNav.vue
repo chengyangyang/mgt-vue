@@ -70,19 +70,47 @@
                 <el-submenu index="4">
                   <template slot="title">
                     <i class="el-icon-menu"></i>
-                    <span slot="title">认证审核3</span>
+                    <span slot="title">联盟管理</span>
                   </template>
                   <el-menu-item-group>
-                    <el-menu-item index="4-1"><router-link to="/news3">认证审核3</router-link></el-menu-item>
+                    <el-menu-item index="4-1"><router-link to="/alliance">联盟管理</router-link></el-menu-item>
+                    <el-menu-item index="4-2"><router-link to="/joinSrchlist">加盟机构</router-link></el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="5">
                   <template slot="title">
                     <i class="el-icon-menu"></i>
-                    <span slot="title">认证审核1</span>
+                    <span slot="title">需求项目管理</span>
                   </template>
                   <el-menu-item-group>
-                    <el-menu-item index="5-1"><router-link to="/news1">认证审核1</router-link></el-menu-item>
+                    <el-menu-item index="5-1"><router-link to="/demandManagement">需求项目审核</router-link></el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="6">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">竞价项目管理</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="6-1"><router-link to="/bidManagement">竞价项目审核</router-link></el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="6">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">服务案例管理</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="7-1"><router-link to="/caseManagement">服务案例审核</router-link></el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="8">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">合同备案管理</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="8-1"><router-link to="/contract">合同备案审核</router-link></el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
               </el-menu>

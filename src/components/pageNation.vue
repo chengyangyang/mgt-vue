@@ -58,5 +58,9 @@ export default {
 #pageNation{
   margin-top: 10px;
 }
+.is-in-pagination input{
+  height: 28px!important;
+  line-height: 28px !important;
+}
 
 </style>
