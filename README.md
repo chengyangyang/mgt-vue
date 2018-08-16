@@ -25,8 +25,13 @@
 	|           |-- VueEditor.vue          // 富文本编辑器
 	|   |-- view                   	 // 主要路由页面
 	|     |-- children                   	 // 二级页面
-	|           |-- news2.vue              //资讯2页面
-	|           |-- newsAdd.vue            //资讯2添加页面
+	|           |-- certificetionAduit             //认证审核
+	|             |-- accountMangement.vue         //账号管理
+	|             |-- serviceDemand.vue            //服务需求方
+	|             |-- serviceProvide.vue           //服务供应方
+	|           |-- consultingMangement             //资讯管理
+  	|             |-- news2.vue         //资讯管理列表页
+  	|             |-- newsAdd.vue       //咨询添加页面
 	|     |-- index.vue       // 首页
 	|     |-- login.vue         // 登录
 	|   |-- App.vue                      // 页面入口文件

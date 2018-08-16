@@ -231,9 +231,6 @@
       }
     }
   }
-  .el-input{
-    width: 75% !important;
-  }
   .block{
     margin: 20px 0;
   }

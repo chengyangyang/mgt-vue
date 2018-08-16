@@ -5,8 +5,8 @@ import leftNav from '@/components/leftNav'
 const login = r => require.ensure([], () => r(require('@/view/login')), 'login')
 const index = r => require.ensure([], () => r(require('@/view/index')), 'index')
 const news1 = r => require.ensure([], () => r(require('@/view/children/news1')), 'news1')
-const news2 = r => require.ensure([], () => r(require('@/view/children/news2')), 'news2')
-const newsAdd = r => require.ensure([], () => r(require('@/view/children/newsAdd')), 'newsAdd')
+const news2 = r => require.ensure([], () => r(require('@/view/children/consultingMangement/news2')), 'news2')
+const newsAdd = r => require.ensure([], () => r(require('@/view/children/consultingMangement/newsAdd')), 'newsAdd')
 const news3 = r => require.ensure([], () => r(require('@/view/children/news3')), 'news3')
 
 Vue.use(Router)

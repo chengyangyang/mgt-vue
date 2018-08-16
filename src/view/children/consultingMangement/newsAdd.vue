@@ -70,7 +70,7 @@
 </template>
 
 <script>
-  import vueEditor from '@/components/VueEditor'   // 分页组件
+  import vueEditor from '@/components/VueEditor'   // 富文本编辑器组件
   export default {
     name:"news2",
     data(){
