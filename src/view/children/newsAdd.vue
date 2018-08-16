@@ -122,6 +122,9 @@
         vueEditor
     },
     mounted(){
+      if(this.$route.params.id){
+        console.log(this.$route.params.id);
+      }
     },
     methods:{
     //  图片上传

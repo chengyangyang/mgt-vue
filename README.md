@@ -57,7 +57,6 @@
 
 ## 组件使用说明与演示 ##
 
-### vue-schart ###
 ### element-ui ###
 一套基于vue.js2.0的桌面组件库。访问地址：[element](http://element.eleme.io/#/zh-CN/component/layout)
 
