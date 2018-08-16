@@ -7,6 +7,7 @@ const login = r => require.ensure([], () => r(require('@/view/login')), 'login')
 const index = r => require.ensure([], () => r(require('@/view/index')), 'index')
 const news1 = r => require.ensure([], () => r(require('@/view/children/news1')), 'news1')
 const accountManagement = r => require.ensure([], () => r(require('@/view/children/certificationAudit/accountManagement')), 'accountManagement')
+const accountView = r => require.ensure([], () => r(require('@/view/children/certificationAudit/accountView')), 'accountView')
 const serviceDemand = r => require.ensure([], () => r(require('@/view/children/certificationAudit/serviceDemand')), 'serviceDemand')
 const serviceProvide = r => require.ensure([], () => r(require('@/view/children/certificationAudit/serviceProvide')), 'serviceProvide')
 
@@ -46,6 +47,11 @@ export default new Router({
           path: '/accountManagement',
           name: 'accountManagement',
           component: accountManagement
+        },
+        {
+          path: '/accountView',
+          name: 'accountView',
+          component: accountView
         },
         {
           path: '/serviceDemand',
