@@ -6,16 +6,16 @@ const Random = Mock.Random;
 
 let articles = [];
 for (let i = 0; i < 15; i++) {
-  let allianceObject = {
+  let productObject = {
     title: Random.csentence(5, 30), // Random.csentence( min, max )
     published: Random.datetime() // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
   }
-  articles.push(allianceObject)
+  articles.push(productObject)
 }
 var totalPageNum = articles.length;
 
 // mock一组数据
-const allianceData = function (opt) {
+const productData = function (opt) {
   var page = JSON.parse(opt.body).page;
   var pageNumber = JSON.parse(opt.body).pageNumber;
   var newArticles = articles.slice((page - 1) * pageNumber, page * pageNumber);
@@ -31,4 +31,4 @@ const allianceData = function (opt) {
 
 // mock一组数据
 
-Mock.mock('/alliance', /post|get/i, allianceData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+Mock.mock('/alliance', /post|get/i, productData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
