@@ -1,14 +1,14 @@
 <template>
-  <div id="accountView">
+  <div id="demandView">
     <p style="background: #fafafa;
     line-height: 35px;
     padding: 6px 10px;
     border-bottom: 2px solid #edf0f5;">
-      <span>认证管理</span><span> > </span><span style="color: #777;">信息查看</span>
+      <span>认证审核</span><span> > </span><span style="color: #777;">服务需求方</span><span> > </span><span style="color: #777;">信息查看</span>
     </p>
     <table border>
       <tr>
-        <td class="td150">账号信息</td>
+        <td class="td150">基本信息</td>
         <td colspan="3"></td>
       </tr>
       <tr>
@@ -26,17 +26,33 @@
       <tr>
         <td class="td150">是否认证：</td>
         <td></td>
-        <td class="td150">注册时间：</td>
-        <td></td>
-      </tr>
-      <tr>
         <td class="td150">联系人：</td>
-        <td></td>
-        <td class="td150">联系电话：</td>
         <td></td>
       </tr>
       <tr>
         <td class="td150">联系地址：</td>
+        <td></td>
+        <td class="td150">联系电话：</td>
+        <td>18409287651</td>
+      </tr>
+      <tr>
+        <td class="td150">申请时间：</td>
+        <td></td>
+        <td class="td150">申请状态：</td>
+        <td>未通过</td>
+      </tr>
+      <tr>
+        <td class="td150">证明材料：</td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td class="td150">审核时间：</td>
+        <td></td>
+        <td class="td150">审核状态：</td>
+        <td>18409287651</td>
+      </tr>
+      <tr>
+        <td class="td150">审核意见：</td>
         <td colspan="3"></td>
       </tr>
     </table>
@@ -66,7 +82,7 @@
 </script>
 
 <style lang="less">
-  #accountView{
+  #demandView{
     width: 100%;
     table{
       width: 800px;
@@ -76,7 +92,7 @@
     tr{
       width: 100%;
       height: 40px;
-      line-height:25px
+     line-height:25px
     }
     td{
       padding: 0 5px;

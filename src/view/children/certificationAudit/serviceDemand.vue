@@ -1,158 +1,243 @@
 <template>
-  <div id="news1">
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>新闻资讯</el-breadcrumb-item>
-    </el-breadcrumb>
-    <div class="mgt-content-box">
-      <div class="ibox">
-        <div class="title">
-          <el-button type="primary" icon="el-icon-plus">添加新闻资讯</el-button>
-        </div>
-        <div class="detail">
-          <el-form :inline="true" :model="searchData" class="demo-form-inline">
-            <el-form-item label="标题">
-              <el-input v-model="searchData.title" placeholder="标题"></el-input>
-            </el-form-item>
-            <el-form-item label="发布单位">
-              <el-input v-model="searchData.unit" placeholder="发布单位"></el-input>
-            </el-form-item>
-            <el-form-item label="文章类型">
-              <el-select v-model="searchData.types" placeholder="文章类型">
-                <el-option v-for="item in newsOptions" :key="item.newsVal" :label="item.label" :value="item.newsVal"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="发布时间">
-              <el-date-picker v-model="searchData.published" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="onSubForm1">查询</el-button>
-            </el-form-item>
-          </el-form>
+  <div id="serviceDemand">
+    <p style="background: #fafafa;
+    line-height: 35px;
+    padding: 6px 10px;
+    border-bottom: 2px solid #edf0f5;">
+      <span>认证审核</span><span> > </span><span style="color: #777;">服务需求方</span>
+    </p>
+    <div class="tableWrap">
+      <div class="tableBox">
+        <div class="searchBar">
+          <div class="inputDiv">
+            <label>需求单位名称:</label>
+            <el-input
+              placeholder="需求单位名称"
+              v-model="searchData.demandName">
+            </el-input>
+          </div>
+          <div class="inputDiv">
+            <label>统一社会信用代码:</label>
+            <el-input
+              placeholder="统一社会信用代码"
+              v-model="searchData.companyCode">
+            </el-input>
+          </div>
+          <div class="inputDiv">
+            <label>审核状态:</label>
+            <el-select autosize v-model="searchData.status" placeholder="审核状态" id="type">
+              <el-option
+                v-for="item in typeData"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </div>
+          <div class="inputDiv">
+            <label>用户名:</label>
+            <el-input
+              placeholder="请输入用户名"
+              v-model="searchData.userName">
+            </el-input>
+          </div>
+          <div class="inputDiv">
 
-          <el-table :data="tableData" stripe style="width: 100%">
-            <el-table-column type="index" label="序号" prop="idx" width="80"></el-table-column>
-            <el-table-column prop="title" label="标题"></el-table-column>
-            <el-table-column prop="unit" label="发布单位"></el-table-column>
-            <el-table-column prop="types" label="文章类型" width="180"></el-table-column>
-            <el-table-column prop="stated" label="发布/关闭" width="180"></el-table-column>
-            <el-table-column prop="published" label="发布时间" width="180"></el-table-column>
-            <el-table-column label="操作">
+            <label>认证时间:</label>
+            <el-date-picker
+              v-model="authenticationTime"
+              type="datetimerange"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+            </el-date-picker>
+          </div>
+          <div class="inputDiv">
+
+            <label>审核时间:</label>
+            <el-date-picker
+              v-model="examTime"
+              type="datetimerange"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+            </el-date-picker>
+          </div>
+          <el-button type="primary" size="small" @click="selectList">搜索</el-button>
+        </div>
+        <div class="table">
+          <el-table
+            :data="newsListShow" border
+            style="width: 100%" class="newsTable">
+            <el-table-column
+              type="index"
+              width="70" header-align="center"
+              label="序号">
+            </el-table-column>
+            <el-table-column
+              width="170" header-align="center"
+              label="用户名"  property="userName">
+            </el-table-column>
+            <el-table-column
+              width="130" header-align="center"
+              label="需求单位名称"  property="demandName">
+            </el-table-column>
+            <el-table-column
+              header-align="center"
+              label="统一社会信用代码"  property="companyCode">
+            </el-table-column>
+            <el-table-column
+              header-align="center"
+              label="认证时间"  property ="authenticationTime">
+            </el-table-column>
+            <el-table-column
+              header-align="center"
+              label="审核时间"  property ="examTime">
+            </el-table-column>
+            <el-table-column
+              header-align="center"
+              label="审核状态"  property ="status" :formatter="formatter">
+            </el-table-column>
+            <el-table-column label="操作" header-align="center">
               <template slot-scope="scope">
-                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button size="mini" type="primary" @click="handleDetail(scope.$index, scope.row)">查看</el-button>
-                <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                <el-button
+                  size="mini"
+                  type="danger"
+                  @click="handleCheck(scope.$index, scope.row)">查看/审核</el-button>
               </template>
             </el-table-column>
           </el-table>
-
-          <div class="page-turn text-center">
-            <v-pageNation ref="myChid" :searchData="searchData"  :resourceUrl="resourceUrl" @askData="listData"></v-pageNation>
-          </div>
         </div>
+        <!--分页-->
+        <pageNation  ref="myChid" :resourceUrl="resourceUrl" :searchData="searchData" @askData="listData"></pageNation>
       </div>
     </div>
+    <!-- 删除提示框 -->
+    <el-dialog title="提示" :visible.sync="delVisible" width="300px" center>
+      <div class="del-dialog-cnt">{{confirmData}}</div>
+      <span slot="footer" class="dialog-footer">
+                <el-button @click="delVisible = false">取 消</el-button>
+                <el-button type="primary" @click="deleteRow">确 定</el-button>
+            </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import pageNation from '@/components/pageNation.vue';
+  import pageNation from '@/components/pageNation'   // 分页组件
   export default {
-    name:"news1",
+    name:"news2",
     data(){
       return{
-        newsData: '',
-        searchData: {
-          title: '',
-          unit: '',
-          types: '',
-          published: ''
-        },
-        newsOptions: [
-          {
-            typeVal: '选项1',
-            label: '黄金糕'
-          },
-          {
-            typeVal: '选项2',
-            label: '双皮奶'
-          },
-          {
-            typeVal: '选项3',
-            label: '蚵仔煎'
-          }
-        ],
-        tableData: '', //列表总数据
-        resourceUrl:{url:"/news1"},
-//        published: [new Date(2018, 8, 10, 0, 0), new Date(2018, 10, 1, 0, 0)],
+        delVisible: false,
+        value6:true,
+        authenticationTime:"",    // 认证时间
+        examTime:"",   // 审核时间
+        confirmData:"您确定要进行冻结操作吗",
+        searchData:{demandName:"",companyCode:"",status:"", userName:"",authenticationStartTime:"",authenticationEndTime:"",examStartTime:"",examEndTime:""}, // 搜索框
+        typeData1:{"1":"已提交","2":"已保存","3":"未通过","4":"已通过"},
+        typeData: [{
+          value: '1',
+          label: '已提交'
+        }, {
+          value: '2',
+          label: '已保存'
+        },{
+          value: '3',
+          label: '未通过'
+        },{
+          value: '4',
+          label: '已通过'
+        }],  // 文章类型
+        newsListShow:"",             //列表总数据
+        resourceUrl:{url:"/demandData"},
+        idx: -1
       }
     },
     components:{
-      'v-pageNation' : pageNation
+      pageNation
     },
     mounted(){
     },
     methods:{
-      //表格操作事件
-      handleEdit(index, row) {
-        console.log(index, row);
+      //查看审核
+      handleCheck(index, row) {
+        var id = index;
+        this.$router.push({ name:"demandView",params:{ companyName: row.companyName,companyCode:row.companyCode}})
       },
-      handleDetail(index, row) {
-        console.log(index, row);
-      },
-      handleDelete(index, row) {
-        console.log(index, row);
+      //类型判断
+      formatter(row, column,cellValue,index) {
+        return cellValue = this.typeData1[cellValue];
       },
       //列表数据
       listData(data){
-        this.tableData = data;
+        this.newsListShow = data;
       },
-     //搜索事件
-      onSubForm1() {
+      //搜索
+      selectList(){
+        // 认证时间
+        this.searchData.examStartTime = this.timeDelete(this.examTime[0]);
+        this.searchData.examEndTime = this.timeDelete(this.examTime[1]);
+        // 审核时间
+        this.searchData.authenticationStartTime = this.timeDelete(this.authenticationTime[0]);
+        this.searchData.authenticationEndTime = this.timeDelete(this.authenticationTime[1]);
+
         this.$refs.myChid.setNewsApi();
       },
+      //  获取时间
+      timeDelete(datetime){
+        var year = datetime.getFullYear();
+        var month = datetime.getMonth()+1 < 10 ? "0"+ eval(datetime.getMonth()+1):eval(datetime.getMonth()+1);//js从0开始取
+        var date = datetime.getDate() < 10 ? "0"+ datetime.getDate():datetime.getDate();
+        var hour = datetime.getHours()< 10 ? "0"+ datetime.getHours():datetime.getHours();
+        var minutes = datetime.getMinutes()< 10 ? "0"+ datetime.getMinutes():datetime.getMinutes();
+        var second = datetime.getSeconds()< 10 ? "0"+ datetime.getSeconds():datetime.getSeconds();
+
+        var time = year+"-"+month+"-"+date+" "+hour+":"+minutes+":"+second; //2009-06-12 17:18:05
+        return time;
+      }
     }
   }
 </script>
 
 <style lang="less">
-  #news1{
-    zoom: 0.9;
+  #serviceDemand{
+  .tableWrap{
+    padding: 10px 15px;
+  .tableBox{
+    background: #fff;
+    padding: 0 20px;
+    margin: 10px;
+    border: 1px solid #dee5f1;
+  .searchBar{
+    padding: 15px 0;
+  .inputDiv{
+    display: inline-block;
+    margin: 5px;
+    /*margin-left: 10px !important;*/
   }
-  .el-breadcrumb{
-    background: #fafafa;
-    line-height: 37px;
-    padding: 10px 10px;
-    border-bottom: 2px solid #edf0f5;
   }
-  .mgt-content-box{
-    padding: 10px 20px;
-    .ibox{
-      background: #fff;
-      padding: 0 20px;
-      margin: 10px;
-      border: 1px solid #dee5f1;
-      .title {
-        border-bottom: 1px solid #dee5f1;
-        font-size: 16px;
-        line-height: 80px;
-      }
-      .detail {
-        padding: 20px 0;
-        th.is-leaf{
-          background: #409EFF;
-          color: #ffffff;
-        }
-        .page-turn{
-          margin-top: 35px;
-        }
-        .text-align{
-          text-align: center;
-        }
-      }
-    }
+  .newsTable{
+  th{
+    padding: 3px 0.5rem!important;
   }
-  .el-table td, .el-table th.is-leaf{
-    text-align: center;
+  td{
+    padding: 3px 0.5rem!important;
+  }
+  }
+  }
+  }
+  }
+  .block{
+    margin: 20px 0;
+  }
+  .el-pagination{
+    padding-left: 280px !important;
+  }
+  .el-input{
+    width: 170px;
+  }
+  .el-date-editor--datetimerange.el-input, .el-date-editor--datetimerange.el-input__inner{
+    width: 375px;
   }
 </style>

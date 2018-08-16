@@ -62,3 +62,26 @@ Mock.mock('/configData', /post|get/i, function (opt) {
     totalPage: totalPageNum
   }
 })
+// 服务需求方
+let demandList = []
+for (let i = 0; i < 21; i++) {
+  let demandObject = {
+    userName: Random.cname(),
+    demandName: Random.ctitle(3, 5),
+    companyCode: Random.natural(10000),
+    authenticationTime: Random.date(),
+    examTime: Random.date(),
+    status: Random.integer(1, 4)
+  }
+  demandList.push(demandObject)
+}
+Mock.mock('/demandData', /post|get/i, function (opt) {
+  var page = JSON.parse(opt.body).page
+  var pageNumber = JSON.parse(opt.body).pageNumber
+  var demandArticles = demandList.slice((page - 1) * pageNumber, page * pageNumber)
+  totalPageNum = demandList.length
+  return {
+    data: demandArticles,
+    totalPage: totalPageNum
+  }
+})

@@ -9,7 +9,9 @@ const news1 = r => require.ensure([], () => r(require('@/view/children/news1')),
 const accountManagement = r => require.ensure([], () => r(require('@/view/children/certificationAudit/accountManagement')), 'accountManagement')
 const accountView = r => require.ensure([], () => r(require('@/view/children/certificationAudit/accountView')), 'accountView')
 const serviceDemand = r => require.ensure([], () => r(require('@/view/children/certificationAudit/serviceDemand')), 'serviceDemand')
+const demandView = r => require.ensure([], () => r(require('@/view/children/certificationAudit/demandView')), 'demandView')
 const serviceProvide = r => require.ensure([], () => r(require('@/view/children/certificationAudit/serviceProvide')), 'serviceProvide')
+const serviceView = r => require.ensure([], () => r(require('@/view/children/certificationAudit/serviceView')), 'serviceView')
 
 const alliance = r => require.ensure([], () => r(require('@/view/children/alliance/alliance')), 'alliance') // 联盟管理
 const joinSrchlist = r => require.ensure([], () => r(require('@/view/children/alliance/joinSrchlist')), 'joinSrchlist') // 加盟机构
@@ -59,9 +61,19 @@ export default new Router({
           component: serviceDemand
         },
         {
+          path: '/demandView', // 服务需求详情页面
+          name: 'demandView',
+          component: demandView
+        },
+        {
           path: '/serviceProvide',
           name: 'serviceProvide',
           component: serviceProvide
+        },
+        {
+          path: '/serviceView',
+          name: 'serviceView',
+          component: serviceView
         },
         {
           path: '/news2',
@@ -79,7 +91,7 @@ export default new Router({
           component: alliance
         },
         {
-          path: '/joinSrchlist',// 加盟机构
+          path: '/joinSrchlist', // 加盟机构
           name: 'joinSrchlist',
           component: joinSrchlist
         },

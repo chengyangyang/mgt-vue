@@ -52,7 +52,7 @@
 
             <label>注册时间:</label>
             <el-date-picker
-              v-model="searchData.registTime"
+              v-model="registTime"
               type="datetimerange"
               range-separator="至"
               start-placeholder="开始日期"
@@ -142,6 +142,7 @@
       return{
         delVisible: false,
         value6:true,
+        registTime:"",
         confirmData:"您确定要进行冻结操作吗",
         searchData:{userName:"", companyName:"", companyCode:"", phoneNumber:"", type:"",registStartTime:"",registEndTime:""}, // 搜索框
         value4: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],   // 时间初始化
@@ -181,14 +182,13 @@
       listData(data){
         this.newsListShow = data;
       },
+      // 搜索
       selectList(){
-        this.searchData.registStartTime = this.timeDelete(this.searchData.registTime[0]);
-        this.searchData.registEndTime = this.timeDelete(this.searchData.registTime[1]);
+        this.searchData.registStartTime = this.timeDelete(this.registTime[0]);
+        this.searchData.registEndTime = this.timeDelete(this.registTime[1]);
         this.$refs.myChid.setNewsApi();
       },
-      addNews(){
-        this.$router.push("/newsAdd");
-      },
+      //解冻操作
       fozen(index, row,data) {
         if(data == 1){
           this.confirmData = "您确定要进行解冻操作吗?";
@@ -201,10 +201,6 @@
       deleteRow(){
         this.$message.success('操作成功');
         this.delVisible = false;
-      },
-      //是否发布
-      test(row){
-        console.log(row.isPublish);
       },
     //  获取时间
       timeDelete(datetime){
