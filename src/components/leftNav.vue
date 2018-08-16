@@ -53,9 +53,9 @@
                     <span slot="title">认证审核</span>
                   </template>
                   <el-menu-item-group>
-                    <el-menu-item index="2-1">账号管理</el-menu-item>
-                    <el-menu-item index="2-2">服务需求方</el-menu-item>
-                    <el-menu-item index="2-3">服务供应方</el-menu-item>
+                    <el-menu-item index="2-1"><router-link to="/accountManagement">账号管理</router-link></el-menu-item>
+                    <el-menu-item index="2-2"><router-link to="/serviceDemand">服务需求方</router-link></el-menu-item>
+                    <el-menu-item index="2-3"><router-link to="/serviceProvide">服务供应方</router-link></el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="3">

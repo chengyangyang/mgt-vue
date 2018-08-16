@@ -56,7 +56,7 @@
 </template>
 
 <script>
-  import pageNation from '../../components/pageNation.vue';
+  import pageNation from '@/components/pageNation.vue';
   export default {
     name:"news1",
     data(){

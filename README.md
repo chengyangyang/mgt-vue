@@ -17,6 +17,7 @@
 ## 目录结构介绍 ##
 
 	|-- build                            // webpack配置文件
+	|   |-- webpack.base.conf.js                   // 打包依赖路径
 	|-- config                           // 项目打包路径
 	|-- src                              // 源码目录
 	|   |-- components                   // 组件
