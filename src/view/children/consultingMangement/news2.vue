@@ -38,7 +38,6 @@
               </el-select>
             </div>
             <div class="inputDiv">
-
               <label>发布时间:</label>
               <el-date-picker
                 v-model="value4"
@@ -236,5 +235,11 @@
   }
   .el-pagination{
     padding-left: 280px !important;
+  }
+  .el-input{
+    width: 170px;
+  }
+  .el-date-editor--datetimerange.el-input, .el-date-editor--datetimerange.el-input__inner{
+    width: 375px;
   }
 </style>
