@@ -47,4 +47,11 @@
     .editor-btn{
         margin-top: 20px;
     }
+    @media (min-width: 1400px){
+      .container {;
+        float: left;
+        max-width: 1300px;
+        padding: 0;
+      }
+    }
 </style>
