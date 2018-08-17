@@ -113,12 +113,12 @@ export default {
         },
         {
           icon: 'el-icon-tickets',
-          path: 'news2',
-          title: '咨询管理',
+          path: 'newsList',
+          title: '资询管理',
           subs:[
             {
-              path: 'news2',
-              title: '咨询管理'
+              path: 'newsList',
+              title: '资询管理'
             }
           ]
         },
