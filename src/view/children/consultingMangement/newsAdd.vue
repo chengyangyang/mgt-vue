@@ -10,7 +10,7 @@
       <el-form ref="ruleForm" :rules="rules" :model="newsdata" label-width="80px">
         <!--文章类别-->
         <el-form-item label="文章类别:" prop="newsType">
-          <el-select  v-model="newsdata.newsType" placeholder="请选择" id="type" style="width: 250px">
+          <el-select  v-model="newsdata.newsType" placeholder="请选择" id="type" style="width: 300px">
             <el-option
               v-for="item in typeData"
               :key="item.value"
@@ -20,10 +20,10 @@
           </el-select>
         </el-form-item>
         <el-form-item label="文章标题:" prop="title">
-          <el-input v-model="newsdata.title" style="width: 250px !important;"></el-input>
+          <el-input v-model="newsdata.title" style="width: 300px !important;"></el-input>
         </el-form-item>
         <el-form-item label="发布单位:" prop="publishUnit">
-          <el-input v-model="newsdata.publishUnit"  style="width: 250px !important;"  ></el-input>
+          <el-input v-model="newsdata.publishUnit"  style="width: 300px !important;"  ></el-input>
         </el-form-item>
         <el-form-item label="添加标题图:">
           <el-upload
@@ -46,7 +46,7 @@
           </template>
         </el-form-item>
         <el-form-item label="信息来源:" prop="comeResource">
-          <el-input v-model="newsdata.comeResource"  style="width: 250px !important;"  ></el-input>
+          <el-input v-model="newsdata.comeResource"  style="width: 300px !important;"  ></el-input>
         </el-form-item>
         <el-form-item label="是否置顶">
           <el-radio-group v-model="newsdata.isTop" prop="isTop">

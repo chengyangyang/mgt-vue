@@ -10,10 +10,10 @@
         <div class="detail">
           <el-form :model="allianceAddForm" ref="allianceAddForm" :rules="rules" label-width="100px" class="demo-ruleForm">
             <el-form-item label="制度名称" prop="title" class="titleCon">
-              <el-input v-model="allianceAddForm.title"></el-input>
+              <el-input v-model="allianceAddForm.title" style="width: 300px !important;"></el-input>
             </el-form-item>
             <el-form-item label="发布单位" prop="unit" class="unitCon">
-              <el-input v-model="allianceAddForm.unit"></el-input>
+              <el-input v-model="allianceAddForm.unit" style="width: 300px !important;"></el-input>
             </el-form-item>
             <el-form-item label="制度上传" prop="filed" class="fileCon">
               <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/"
