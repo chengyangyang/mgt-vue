@@ -84,3 +84,33 @@ const joinData = function (opt) {
 }
 // mock一组数据
 Mock.mock('/joinSrchlist', /post|get/i, joinData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//需求项目审核
+let demandSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let demandObject = {
+    organUnit: Random.csentence(5, 15), // Random.csentence( min, max )
+    organCode: Random.natural(600, 10000), // Random.natural( min, max )
+    fwxl: Random.integer(1, 5), // Random.cname() 随机生成一个常见的中文姓名
+    organName: Random.csentence(5, 20), // Random.csentence( min, max )
+    startDate: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    auditStartDate: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    auditState: Random.integer(1, 3)
+  }
+  demandSrchlist.push(demandObject)
+}
+// mock一组数据
+const demandData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var demandArticles = demandSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = demandSrchlist.length
+  return {
+    data: demandArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/demandManagement', /post|get/i, demandData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
