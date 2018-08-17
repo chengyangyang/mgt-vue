@@ -1,26 +1,18 @@
 <template>
-  <div id="news1">
+  <div id="alliance">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>新闻资讯</el-breadcrumb-item>
+      <el-breadcrumb-item>加盟机构</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="mgt-content-box">
       <div class="ibox">
         <div class="title">
-          <el-button type="primary" icon="el-icon-plus">添加新闻资讯</el-button>
+          <el-button type="primary" icon="el-icon-plus"  @click="addBtn">新增</el-button>
         </div>
         <div class="detail">
           <el-form :inline="true" :model="searchData" class="demo-form-inline">
-            <el-form-item label="标题">
-              <el-input v-model="searchData.title" placeholder="标题"></el-input>
-            </el-form-item>
-            <el-form-item label="发布单位">
-              <el-input v-model="searchData.unit" placeholder="发布单位"></el-input>
-            </el-form-item>
-            <el-form-item label="文章类型">
-              <el-select v-model="searchData.types" placeholder="文章类型">
-                <el-option v-for="item in newsOptions" :key="item.newsVal" :label="item.label" :value="item.newsVal"></el-option>
-              </el-select>
+            <el-form-item label="机构名称">
+              <el-input v-model="searchData.title" placeholder="机构名称"></el-input>
             </el-form-item>
             <el-form-item label="发布时间">
               <el-date-picker v-model="searchData.published" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
@@ -32,15 +24,11 @@
 
           <el-table :data="tableData" stripe style="width: 100%">
             <el-table-column type="index" label="序号" prop="idx" width="80"></el-table-column>
-            <el-table-column prop="title" label="标题"></el-table-column>
-            <el-table-column prop="unit" label="发布单位"></el-table-column>
-            <el-table-column prop="types" label="文章类型" width="180"></el-table-column>
-            <el-table-column prop="stated" label="发布/关闭" width="180"></el-table-column>
-            <el-table-column prop="published" label="发布时间" width="180"></el-table-column>
+            <el-table-column prop="title" label="机构名称"></el-table-column>
+            <el-table-column prop="published" label="发布时间"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button size="mini" type="primary" @click="handleDetail(scope.$index, scope.row)">查看</el-button>
                 <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
               </template>
             </el-table-column>
@@ -52,38 +40,32 @@
         </div>
       </div>
     </div>
+    <!-- 删除提示框 -->
+    <el-dialog title="提示" :visible.sync="delVisible" width="300px" center>
+      <div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="delVisible = false">取 消</el-button>
+        <el-button type="primary" @click="deleteRow">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
   import pageNation from '@/components/pageNation.vue';
   export default {
-    name:"news1",
+    name:"alliance",
     data(){
       return{
+        delVisible: false,
         newsData: '',
         searchData: {
           title: '',
-          unit: '',
-          types: '',
           published: ''
         },
-        newsOptions: [
-          {
-            typeVal: '选项1',
-            label: '黄金糕'
-          },
-          {
-            typeVal: '选项2',
-            label: '双皮奶'
-          },
-          {
-            typeVal: '选项3',
-            label: '蚵仔煎'
-          }
-        ],
         tableData: '', //列表总数据
-        resourceUrl:{url:"/news1"},
+        resourceUrl:{url:"/joinSrchlist"},
+        idx: -1
 //        published: [new Date(2018, 8, 10, 0, 0), new Date(2018, 10, 1, 0, 0)],
       }
     },
@@ -93,24 +75,32 @@
     mounted(){
     },
     methods:{
-      //表格操作事件
+      // 表格操作事件
       handleEdit(index, row) {
         console.log(index, row);
       },
-      handleDetail(index, row) {
-        console.log(index, row);
-      },
       handleDelete(index, row) {
-        console.log(index, row);
+        this.idx = index;
+        this.delVisible = true;
       },
-      //列表数据
+      // 列表数据
       listData(data){
         this.tableData = data;
       },
-     //搜索事件
+      // 搜索事件
       onSubForm1() {
         this.$refs.myChid.setNewsApi();
       },
+      // 点击确定，关闭弹出层
+      deleteRow() {
+        this.tableData.splice(this.idx, 1);
+        this.$message.success('删除成功');
+        this.delVisible = false;
+      },
+      // 新增
+      addBtn() {
+        this.$router.push('/joinAdd');
+      }
     }
   }
 </script>

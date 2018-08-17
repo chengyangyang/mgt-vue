@@ -19,7 +19,7 @@
               <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/"
                 :on-remove="handleRemove" :before-remove="beforeRemove" multiple :file-list="fileList" :on-success="handleSuccess">
                 <el-button size="small" type="primary">上传pdf文件</el-button>
-                <div slot="tip" class="el-upload__tip">请上传pdf文件，大小限制5MB</div>
+                <div slot="tip" class="el-upload__tip" style="color: #f56c6c;">请上传pdf文件，大小限制5MB</div>
               </el-upload>
             </el-form-item>
             <el-form-item>
@@ -38,11 +38,6 @@
   export default {
     name:"allianceAdd",
     data(){
-      var checkFiled = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('上传文件不能为空！'));
-        }
-      };
       return{
         allianceAddForm: {
           title: '',
@@ -136,28 +131,6 @@
   }
   .el-table td, .el-table th.is-leaf{
     text-align: center;
-  }
-  .titleCon{
-    position: relative;
-  }
-  .titleCon:before {
-    content: '*';
-    color: #f56c6c;
-    margin-right: 4px;
-    position: absolute;
-    top: 10px;
-    left: 23px;
-  }
-  .unitCon{
-    position: relative;
-  }
-  .unitCon:before {
-    content: '*';
-    color: #f56c6c;
-    margin-right: 4px;
-    position: absolute;
-    top: 10px;
-    left: 23px;
   }
   .fileCon{
     position: relative;

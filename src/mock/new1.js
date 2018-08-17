@@ -33,6 +33,7 @@ const productData = function (opt) {
 // mock一组数据
 Mock.mock('/news1', /post|get/i, productData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
 
+
 //联盟管理
 let alliances = [];
 for (let i = 0; i < 15; i++) {
@@ -59,3 +60,27 @@ const allianceData = function (opt) {
 }
 // mock一组数据
 Mock.mock('/alliance', /post|get/i, allianceData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//加盟机构
+let joinSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let joinObject = {
+    title: Random.csentence(5, 30), // Random.csentence( min, max )
+    published: Random.datetime() // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+  }
+  joinSrchlist.push(joinObject)
+}
+// mock一组数据
+const joinData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var joinArticles = joinSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = joinSrchlist.length
+  return {
+    data: joinArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/joinSrchlist', /post|get/i, joinData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据

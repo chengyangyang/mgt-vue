@@ -101,6 +101,11 @@ export default new Router({
           component: resolve => require(['@/view/children/alliance/joinSrchlist'], resolve)
         },
         {
+          path: '/joinAdd', // 加盟机构详情
+          name: 'joinAdd',
+          component: resolve => require(['@/view/children/alliance/joinAdd'], resolve)
+        },
+        {
           path: '/demandManagement', // 需求项目审核
           name: 'demandManagement',
           component: resolve => require(['@/view/children/demandManagement/demandManagement'], resolve)
