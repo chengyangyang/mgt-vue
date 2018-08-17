@@ -7,7 +7,7 @@
     <div class="mgt-content-box">
       <div class="ibox">
         <div class="title">
-          <el-button type="primary" icon="el-icon-plus">新增</el-button>
+          <el-button type="primary" icon="el-icon-plus"  @click="addBtn">新增</el-button>
         </div>
         <div class="detail">
           <el-form :inline="true" :model="searchData" class="demo-form-inline">
@@ -25,7 +25,7 @@
           <el-table :data="tableData" stripe style="width: 100%">
             <el-table-column type="index" label="序号" prop="idx" width="80"></el-table-column>
             <el-table-column prop="title" label="制度名称"></el-table-column>
-            <el-table-column prop="published" label="发布时间" width="180"></el-table-column>
+            <el-table-column prop="published" label="发布时间"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -40,6 +40,14 @@
         </div>
       </div>
     </div>
+    <!-- 删除提示框 -->
+    <el-dialog title="提示" :visible.sync="delVisible" width="300px" center>
+      <div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="delVisible = false">取 消</el-button>
+        <el-button type="primary" @click="deleteRow">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -49,6 +57,7 @@
     name:"alliance",
     data(){
       return{
+        delVisible: false,
         newsData: '',
         searchData: {
           title: '',
@@ -56,6 +65,7 @@
         },
         tableData: '', //列表总数据
         resourceUrl:{url:"/alliance"},
+        idx: -1
 //        published: [new Date(2018, 8, 10, 0, 0), new Date(2018, 10, 1, 0, 0)],
       }
     },
@@ -65,21 +75,32 @@
     mounted(){
     },
     methods:{
-      //表格操作事件
+      // 表格操作事件
       handleEdit(index, row) {
         console.log(index, row);
       },
       handleDelete(index, row) {
-        console.log(index, row);
+        this.idx = index;
+        this.delVisible = true;
       },
-      //列表数据
+      // 列表数据
       listData(data){
         this.tableData = data;
       },
-     //搜索事件
+     // 搜索事件
       onSubForm1() {
         this.$refs.myChid.setNewsApi();
       },
+      // 点击确定，关闭弹出层
+      deleteRow() {
+        this.tableData.splice(this.idx, 1);
+        this.$message.success('删除成功');
+        this.delVisible = false;
+      },
+      // 新增
+      addBtn() {
+        this.$router.push('/allianceAdd');
+      }
     }
   }
 </script>

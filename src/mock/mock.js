@@ -1,7 +1,6 @@
 import './new1.js'
 import './new2.js'
 import './new3.js'
-import './alliance.js' // 联盟管理
 // 使用 Mock
 var Mock = require('mockjs')
 // 测试数据
