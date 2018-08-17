@@ -34,85 +34,24 @@
                 @close="handleClose"
                 background-color="#545c64"
                 text-color="#fff"
-                active-text-color="#ffd04b">
-                <el-submenu index="1">
-                  <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span>系统管理</span>
+                active-text-color="#ffd04b" unique-opened router>
+                <template v-for="item in navList">
+                  <template v-if="item.subs">
+                    <el-submenu :index="item.path" :key="item.index">
+                      <template slot="title">
+                        <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+                      </template>
+                      <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index= "subItem.path">
+                        {{ subItem.title }}
+                      </el-menu-item>
+                    </el-submenu>
                   </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="1-1"><router-link to="/index">审核员管理</router-link></el-menu-item>
-                    <el-menu-item index="1-2">角色管理</el-menu-item>
-                    <el-menu-item index="1-3">修改密码</el-menu-item>
-                    <el-menu-item index="1-4">消息管理</el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="2">
-                  <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">认证审核</span>
+                  <template v-else>
+                    <el-menu-item :index="item.index" :key="item.index">
+                      <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+                    </el-menu-item>
                   </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="2-1"><router-link to="/accountManagement">账号管理</router-link></el-menu-item>
-                    <el-menu-item index="2-2"><router-link to="/serviceDemand">服务需求方</router-link></el-menu-item>
-                    <el-menu-item index="2-3"><router-link to="/serviceProvide">服务供应方</router-link></el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="3">
-                  <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">咨询管理</span>
-                  </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="3-1"><router-link to="/news2">咨询管理</router-link></el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="4">
-                  <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">联盟管理</span>
-                  </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="4-1"><router-link to="/alliance">联盟管理</router-link></el-menu-item>
-                    <el-menu-item index="4-2"><router-link to="/joinSrchlist">加盟机构</router-link></el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="5">
-                  <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">需求项目管理</span>
-                  </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="5-1"><router-link to="/demandManagement">需求项目审核</router-link></el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="6">
-                  <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">竞价项目管理</span>
-                  </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="6-1"><router-link to="/bidManagement">竞价项目审核</router-link></el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="6">
-                  <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">服务案例管理</span>
-                  </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="7-1"><router-link to="/caseManagement">服务案例审核</router-link></el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
-                <el-submenu index="8">
-                  <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">合同备案管理</span>
-                  </template>
-                  <el-menu-item-group>
-                    <el-menu-item index="8-1"><router-link to="/contract">合同备案审核</router-link></el-menu-item>
-                  </el-menu-item-group>
-                </el-submenu>
+                </template>
               </el-menu>
             </el-col>
             <el-col :span="20" style="height: 100%;overflow: scroll">
@@ -129,10 +68,129 @@
 export default {
   data () {
     return {
+      navList: [
+        {
+          icon: 'el-icon-setting',
+          path: '',
+          title: '系统管理',
+          subs:[
+            {
+              path: '',
+              title: '审核员管理'
+            },
+            {
+              path: '',
+              title: '角色管理'
+            },
+            {
+              path: '',
+              title: '修改密码'
+            },
+            {
+              path: '',
+              title: '消息管理'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: 'accountManagement',
+          title: '认证审核',
+          subs:[
+            {
+              path: 'accountManagement',
+              title: '账号管理'
+            },
+            {
+              path: 'serviceDemand',
+              title: '服务需求方'
+            },
+            {
+              path: 'serviceProvide',
+              title: '服务供应方'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: 'news2',
+          title: '咨询管理',
+          subs:[
+            {
+              path: 'news2',
+              title: '咨询管理'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: '',
+          title: '联盟管理',
+          subs: [
+            {
+              path: '',
+              title: '联盟管理'
+            },
+            {
+              path: '',
+              title: '加盟机构'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: '',
+          title: '需求项目管理',
+          subs: [
+            {
+              path: '',
+              title: '需求项目管理'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: '',
+          title: '竞价项目管理',
+          subs: [
+            {
+              path: '',
+              title: '竞价项目管理'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: '',
+          title: '服务案例管理',
+          subs: [
+            {
+              path: '',
+              title: '服务案例管理'
+            }
+          ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: '',
+          title: '合同备案管理',
+          subs: [
+            {
+              path: '',
+              title: '合同备案管理'
+            }
+          ]
+        }
+      ]
     }
   },
   components:{
   },
+  // computed:{
+  //   onRoutes(){
+  //     return this.$route.path.replace('/','');
+  //   }
+  // },
   methods:{
     // handleOpen(key, keyPath) {
     //   console.log(key, keyPath);
