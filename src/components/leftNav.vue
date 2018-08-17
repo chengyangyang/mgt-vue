@@ -124,59 +124,59 @@ export default {
         },
         {
           icon: 'el-icon-tickets',
-          path: '',
+          path: 'alliance',
           title: '联盟管理',
           subs: [
             {
-              path: '',
+              path: 'alliance',
               title: '联盟管理'
             },
             {
-              path: '',
+              path: 'joinSrchlist',
               title: '加盟机构'
             }
           ]
         },
         {
           icon: 'el-icon-tickets',
-          path: '',
+          path: 'demandManagement',
           title: '需求项目管理',
           subs: [
             {
-              path: '',
+              path: 'demandManagement',
               title: '需求项目管理'
             }
           ]
         },
         {
           icon: 'el-icon-tickets',
-          path: '',
+          path: 'bidManagement',
           title: '竞价项目管理',
           subs: [
             {
-              path: '',
+              path: 'bidManagement',
               title: '竞价项目管理'
             }
           ]
         },
         {
           icon: 'el-icon-tickets',
-          path: '',
+          path: 'caseManagement',
           title: '服务案例管理',
           subs: [
             {
-              path: '',
+              path: 'caseManagement',
               title: '服务案例管理'
             }
           ]
         },
         {
           icon: 'el-icon-tickets',
-          path: '',
+          path: 'contract',
           title: '合同备案管理',
           subs: [
             {
-              path: '',
+              path: 'contract',
               title: '合同备案管理'
             }
           ]
