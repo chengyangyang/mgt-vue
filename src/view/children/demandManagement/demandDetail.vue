@@ -71,14 +71,14 @@
               </tr>
             </table>
             <div class="goods-form-button" style="width:170px;margin: 50px auto 0;">
-              <el-button id="save-form" type="primary" @click="saveForm">通过</el-button>
-              <el-button id="submit-form" @click="submitForm">不通过</el-button>
+              <el-button id="save-form" type="primary" @click="saveForm" v-if="this.dataCode != 1">通过</el-button>
+              <el-button id="submit-form" @click="submitForm"  v-if="this.dataCode != 1">不通过</el-button>
+              <el-button id="back-form" type="primary" @click="returnBack" v-if="this.dataCode == 1">返回</el-button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -88,28 +88,35 @@
     name:"demandDetail",
     data(){
       return{
-        demandMsg: ""
+        demandMsg: "",
+        dataCode: 0
       }
     },
     components:{
       'v-pageNation' : pageNation
+    },
+    created(){
+      this.dataCode = this.$route.query.code
     },
     mounted(){
     },
     methods:{
       // 审核通过
       saveForm() {
-        console.log(11);
+        this.$message.success('恭喜你提交成功');
       },
       // 审核不通过
       submitForm() {
-        console.log('this.demandMsg---'+this.demandMsg);
         if(this.demandMsg != "" && this.demandMsg != "undefined" && this.demandMsg != null){
           this.$message.success('恭喜你提交成功');
         }else{
           this.$message.warning('请输入审核意见！');
           return false;
         }
+      },
+      // 返回
+      returnBack(){
+        this.$router.go(-1);
       }
     }
   }
