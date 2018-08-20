@@ -135,7 +135,7 @@ const bidData = function (opt) {
   var page = JSON.parse(opt.body).page;
   var pageNumber = JSON.parse(opt.body).pageNumber;
   var bidArticles = bidSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
-  totalPageNum = bidSrchlist.length
+  totalPageNum = bidSrchlist.length;
   return {
     data: bidArticles,
     totalPage: totalPageNum
