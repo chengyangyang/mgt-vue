@@ -1,5 +1,6 @@
 export default {
   //类似于存储全局变量的数据
+  namespaced:true,
   state: {
     show: false,
     testList:['消消',"乐乐","憨憨"],
