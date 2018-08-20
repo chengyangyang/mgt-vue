@@ -100,7 +100,7 @@
     methods:{
       // 表格操作事件
       handleDetail(index, row) {
-        console.log(index, row);
+        this.$router.push('/demandDetail');
       },
       // 审核
       handleExamine(index, row) {
@@ -122,16 +122,12 @@
       // 搜索事件
       onSubForm1() {
         this.$refs.myChid.setNewsApi();
-      },
-      // 新增
-      addBtn() {
-        this.$router.push('/allianceAdd');
       }
     }
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   #news1{
     zoom: 0.9;
   }
