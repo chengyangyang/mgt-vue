@@ -51,8 +51,8 @@
             <el-table-column prop="auditState" label="审核状态" :formatter="formatter"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
-                <el-button size="mini" @click="handleDetail(scope.$index, scope.row)">查看</el-button>
-                <el-button size="mini" @click="handleExamine(scope.$index, scope.row)">审核</el-button>
+                <el-button size="mini" @click="handleDetail(scope.$index, scope.row)" v-if="scope.row.auditState != 1">查看</el-button>
+                <el-button size="mini" @click="handleExamine(scope.$index, scope.row)" v-if="scope.row.auditState == 1">审核</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -72,7 +72,6 @@
     name:"alliance",
     data(){
       return{
-        delVisible: false,
         newsData: '',
         searchData: {
           title: '',
@@ -100,11 +99,16 @@
     methods:{
       // 表格操作事件
       handleDetail(index, row) {
-        console.log(index, row);
+        this.$router.push({
+          name: 'demandDetail',
+          query:{
+            code : 1
+          }
+        });
       },
       // 审核
       handleExamine(index, row) {
-
+        this.$router.push( '/demandDetail');
       },
 
       //类型判断（服务类型）
@@ -118,20 +122,18 @@
       // 列表数据
       listData(data){
         this.tableData = data;
+//        console.log("data-------"+JSON.stringify(data)) // JS中[object object]取值
+
       },
       // 搜索事件
       onSubForm1() {
         this.$refs.myChid.setNewsApi();
-      },
-      // 新增
-      addBtn() {
-        this.$router.push('/allianceAdd');
       }
     }
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   #news1{
     zoom: 0.9;
   }
