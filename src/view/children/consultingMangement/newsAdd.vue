@@ -173,7 +173,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   #newsAdd{
       .formWrap{
         margin-top: 20px;

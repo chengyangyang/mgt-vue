@@ -81,7 +81,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   #serviceView{
     width: 100%;
     table{

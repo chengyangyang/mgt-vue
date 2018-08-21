@@ -65,7 +65,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   #accountView{
     width: 100%;
     table{

@@ -122,8 +122,8 @@
   }
 </script>
 
-<style lang="less" scoped>
-  #news1{
+<style lang="less">
+  #demandDetail{
     zoom: 0.9;
   }
   .el-breadcrumb{

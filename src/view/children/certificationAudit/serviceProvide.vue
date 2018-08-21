@@ -200,7 +200,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   #serviceDemand{
   .tableWrap{
     padding: 10px 15px;

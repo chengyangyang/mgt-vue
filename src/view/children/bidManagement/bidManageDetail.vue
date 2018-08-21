@@ -1,5 +1,5 @@
 <template>
-  <div id="demandDetail">
+  <div id="bidManageDetail">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/bidManageDetail' }">竞价项目管理</el-breadcrumb-item>
@@ -106,7 +106,7 @@
 <script>
   import pageNation from '@/components/pageNation.vue';
   export default {
-    name:"demandDetail",
+    name:"bidManageDetail",
     data(){
       return{
         tableData: ""
@@ -133,8 +133,8 @@
   }
 </script>
 
-<style lang="less" scoped>
-  #news1{
+<style lang="less">
+  #bidManageDetail{
     zoom: 0.9;
   }
   .el-breadcrumb{

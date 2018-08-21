@@ -100,8 +100,8 @@
   }
 </script>
 
-<style lang="less" scoped>
-  #news1{
+<style lang="less">
+  #joinAdd{
     zoom: 0.9;
   }
   .el-breadcrumb{

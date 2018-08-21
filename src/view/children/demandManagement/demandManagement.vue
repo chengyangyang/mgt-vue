@@ -1,5 +1,5 @@
 <template>
-  <div id="alliance">
+  <div id="demandManagement">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>需求项目管理</el-breadcrumb-item>
@@ -69,7 +69,7 @@
 <script>
   import pageNation from '@/components/pageNation.vue';
   export default {
-    name:"alliance",
+    name:"demandManagement",
     data(){
       return{
         newsData: '',
@@ -133,8 +133,8 @@
   }
 </script>
 
-<style lang="less" scoped>
-  #news1{
+<style lang="less">
+  #demandManagement{
     zoom: 0.9;
   }
   .el-breadcrumb{
@@ -158,7 +158,7 @@
       .detail {
         padding: 20px 0;
         th.is-leaf{
-          background: #409EFF;
+          background: #409EFF!important;
           color: #ffffff;
         }
         .page-turn{

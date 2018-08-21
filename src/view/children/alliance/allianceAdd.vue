@@ -92,8 +92,8 @@
   }
 </script>
 
-<style lang="less" scoped>
-  #news1{
+<style lang="less">
+  #allianceAdd{
     zoom: 0.9;
   }
   .el-breadcrumb{
