@@ -108,7 +108,12 @@
       },
       // 审核
       handleExamine(index, row) {
-        this.$router.push( '/demandDetail');
+        this.$router.push({
+          name: 'demandDetail',
+          query:{
+            code : 2
+          }
+        });
       },
 
       //类型判断（服务类型）

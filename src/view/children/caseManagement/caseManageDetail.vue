@@ -1,8 +1,8 @@
 <template>
-  <div id="demandDetail">
+  <div id="caseManageDetail">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item :to="{ path: '/demandManagement' }">需求项目管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/caseManagement' }">服务案例管理</el-breadcrumb-item>
       <el-breadcrumb-item>需求项目详情</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="mgt-content-box">
@@ -85,22 +85,20 @@
 <script>
   import pageNation from '@/components/pageNation.vue';
   export default {
-    name:"demandDetail",
+    name:"caseManageDetail",
     data(){
       return{
         demandMsg: "",
-        dataCode: this.$route.query.code
+        dataCode: 0
       }
     },
     components:{
       'v-pageNation' : pageNation
     },
     created(){
-//      this.dataCode = this.$route.query.code
-      console.log(this.$route.query.code)
+      this.dataCode = this.$route.query.code
     },
     mounted(){
-//      alert("111111");
     },
     methods:{
       // 审核通过
@@ -125,7 +123,7 @@
 </script>
 
 <style lang="less">
-  #demandDetail{
+  #caseManageDetail{
     zoom: 0.9;
   }
   .el-breadcrumb{

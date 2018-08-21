@@ -143,3 +143,55 @@ const bidData = function (opt) {
 }
 // mock一组数据
 Mock.mock('/bidManagement', /post|get/i, bidData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//竞价项目审核详情（竞价方信息）
+let bidMagDetailSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let bidMagDetailObject = {
+    companyName: Random.csentence(5, 15), // Random.csentence( min, max )
+    contact: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    phone: Random.natural(600, 100000), // Random.natural( min, max )
+  }
+  bidMagDetailSrchlist.push(bidMagDetailObject)
+}
+// mock一组数据
+const bidManageDetailData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var bidMagDetailArticles = bidMagDetailSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = bidMagDetailSrchlist.length;
+  return {
+    data: bidMagDetailArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/bidManageDetail', /post|get/i, bidManageDetailData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//服务案例管理
+let caseSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let caseObject = {
+    companyName: Random.csentence(5, 15), // Random.csentence( min, max )
+    name: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    applayTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    approvalTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    states: Random.integer(1, 3), // Random.cname() 随机生成一个常见的中文姓名
+  }
+  caseSrchlist.push(caseObject)
+}
+// mock一组数据
+const caseData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var caseArticles = caseSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = caseSrchlist.length;
+  return {
+    data: caseArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/caseManagement', /post|get/i, caseData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据

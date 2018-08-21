@@ -84,17 +84,21 @@
         <div class="detail">
           <div class="title">竞价方信息 <span style="font-size: 12px;font-weight: 400;">（按照报价先后顺序排列）</span></div>
           <el-table :data="tableData" stripe id="bidding_form" class="biddingForm" style="width: 100%">
-              <el-table-column type="index" label="序号" prop="idx" width="80"></el-table-column>
-              <el-table-column prop="companyName" label="服务商名称"></el-table-column>
-              <el-table-column prop="contact" label="联系人"></el-table-column>
-              <el-table-column prop="phone" label="联系电话" :formatter="formatterFW"></el-table-column>
-              <el-table-column label="操作">
-                <template slot-scope="scope">
-                  <el-button size="mini" @click="handleDetail(scope.$index, scope.row)">查看</el-button>
-                </template>
-              </el-table-column>
-            </el-table>
-          <div class="goods-form-button" style="width:170px;margin: 50px auto 0;">
+            <el-table-column type="index" label="序号" prop="idx" width="80"></el-table-column>
+            <el-table-column prop="companyName" label="服务商名称"></el-table-column>
+            <el-table-column prop="contact" label="联系人"></el-table-column>
+            <el-table-column prop="phone" label="联系电话"></el-table-column>
+            <el-table-column label="操作">
+              <template slot-scope="scope">
+                <el-button size="mini" @click="handleDetail(scope.$index, scope.row)">查看</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+          <div class="page-turn text-center">
+            <v-pageNation ref="myChid" :searchData="searchData"  :resourceUrl="resourceUrl" @askData="listData"></v-pageNation>
+          </div>
+
+          <div class="goods-form-button" style="width:70px;margin: 50px auto;">
             <el-button id="back-form" type="primary" @click="returnBack">返回</el-button>
           </div>
         </div>
@@ -109,21 +113,26 @@
     name:"bidManageDetail",
     data(){
       return{
-        tableData: ""
+        tableData: "",//列表总数据
+        searchData: {},
+        resourceUrl:{url:"/bidManageDetail"},
       }
     },
     components:{
       'v-pageNation' : pageNation
     },
     created(){
-      this.dataCode = this.$route.query.code
     },
     mounted(){
     },
     methods:{
-      // 审核通过
-      saveForm() {
-        this.$message.success('恭喜你提交成功');
+      // 列表数据
+      listData(data){
+        this.tableData = data;
+      },
+      // 竞价方信息跳详情
+      handleDetail() {
+        this.$router.push( '/biddingInfo');
       },
       // 返回
       returnBack(){
@@ -154,10 +163,12 @@
         .title {
           font-weight: bold;
           font-size: 16px;
-          margin: 20px 0;
+          line-height: 50px;
           color: #000;
+          border-bottom: none;
         }
         .basicForm{
+          margin-top: 20px;
           .form-group {
             line-height: 32px;
             min-height: 32px;

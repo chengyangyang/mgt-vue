@@ -126,9 +126,19 @@ export default new Router({
           component: resolve => require(['@/view/children/bidManagement/bidManageDetail'], resolve)
         },
         {
+          path: '/biddingInfo', // 竞价项目，竞价方详情
+          name: 'biddingInfo',
+          component: resolve => require(['@/view/children/bidManagement/biddingInfo'], resolve)
+        },
+        {
           path: '/caseManagement', // 服务案例审核
           name: 'caseManagement',
           component: resolve => require(['@/view/children/caseManagement/caseManagement'], resolve)
+        },
+        {
+          path: '/caseManageDetail', // 服务案例详情
+          name: 'caseManageDetail',
+          component: resolve => require(['@/view/children/caseManagement/caseManageDetail'], resolve)
         },
         {
           path: '/contract', // 合同备案审核
