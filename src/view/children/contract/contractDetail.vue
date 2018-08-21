@@ -2,8 +2,8 @@
   <div id="demandDetail">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item :to="{ path: '/demandManagement' }">需求项目管理</el-breadcrumb-item>
-      <el-breadcrumb-item>需求项目详情</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/contract' }">合同备案管理</el-breadcrumb-item>
+      <el-breadcrumb-item>合同备案详情</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="mgt-content-box">
       <div class="ibox">
@@ -21,12 +21,6 @@
                 <td class="w350" id="orangeCode"></td>
               </tr>
               <tr>
-                <td class="w150">竞价截止时间 : </td>
-                <td class="w350" id="endTime">2018-07-19 16:41:08</td>
-                <td class="w150">需求单位 : </td>
-                <td class="w350" id="organUnit">小米科技</td>
-              </tr>
-              <tr>
                 <td class="w150">联系人: </td>
                 <td class="w350" id="constantor">王思聪</td>
                 <td class="w150">联系电话: </td>
@@ -37,8 +31,11 @@
                 <td class="w350" colspan="3" id="constantAddress"></td>
               </tr>
               <tr>
-                <td class="w150">需求项目描述: </td>
-                <td colspan="3" class="organDescribe" id="priceDetails" >十多个个人</td>
+                <td colspan="4">项目信息</td>
+              </tr>
+              <tr>
+                <td class="w150">项目概述: </td>
+                <td colspan="3" class="organDescribe" id="projectOverview" >十多个个人</td>
               </tr>
               <tr>
                 <td class="w150">服务要求: </td>
@@ -47,6 +44,17 @@
               <tr>
                 <td class="w150">需求项目材料: </td>
                 <td colspan="3" class="organMaterial" id="organMaterial" ></td>
+              </tr>
+              <tr>
+                <td class="w150">竞价截止时间: </td>
+                <td colspan="3" class="organMaterial" id="tenderEndDate" >2018-08-08 17:26:20</td>
+              </tr>
+              <tr>
+                <td colspan="4">备案合同</td>
+              </tr>
+              <tr>
+                <td class="w150">合同材料: </td>
+                <td colspan="3" class="organMaterial" id="contract" ></td>
               </tr>
               <tr>
                 <td colspan="4">审核信息</td>
