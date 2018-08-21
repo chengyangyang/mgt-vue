@@ -195,3 +195,33 @@ const caseData = function (opt) {
 }
 // mock一组数据
 Mock.mock('/caseManagement', /post|get/i, caseData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//合同备案管理
+let contractSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let contractObject = {
+    demandCompany: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    organUnit: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    organCode: Random.natural(600, 100000),
+    organName: Random.csentence(5, 15), // Random.csentence( min, max )
+    fwxl: Random.integer(1, 5), // 随机产出1-5
+    applayTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    approvalTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    states: Random.integer(1, 4), // Random.cname() 随机生成一个常见的中文姓名
+  }
+  contractSrchlist.push(contractObject)
+}
+// mock一组数据
+const contractData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var contractArticles = contractSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = contractSrchlist.length;
+  return {
+    data: contractArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/contract', /post|get/i, contractData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
