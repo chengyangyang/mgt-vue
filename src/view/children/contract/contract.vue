@@ -1,29 +1,39 @@
 <template>
-  <div id="contract">
+  <div id="demandManagement">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>新闻资讯</el-breadcrumb-item>
+      <el-breadcrumb-item>需求项目管理</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="mgt-content-box">
       <div class="ibox">
-        <div class="title">
-          <el-button type="primary" icon="el-icon-plus">添加新闻资讯</el-button>
-        </div>
         <div class="detail">
           <el-form :inline="true" :model="searchData" class="demo-form-inline">
-            <el-form-item label="标题">
-              <el-input v-model="searchData.title" placeholder="标题"></el-input>
+            <el-form-item label="需求项目单位">
+              <el-input v-model="searchData.organUnit" placeholder="需求项目单位"></el-input>
             </el-form-item>
-            <el-form-item label="发布单位">
-              <el-input v-model="searchData.unit" placeholder="发布单位"></el-input>
+            <el-form-item label="需求项目编码">
+              <el-input v-model="searchData.organCode" placeholder="需求项目编码"></el-input>
             </el-form-item>
-            <el-form-item label="文章类型">
-              <el-select v-model="searchData.types" placeholder="文章类型">
-                <el-option v-for="item in newsOptions" :key="item.newsVal" :label="item.label" :value="item.newsVal"></el-option>
+            <el-form-item label="需求项目名称">
+              <el-input v-model="searchData.organName" placeholder="需求项目名称"></el-input>
+            </el-form-item>
+            <el-form-item label="审核状态" prop="auditState">
+              <el-select  v-model="searchData.auditState" placeholder="请选择" id="auditState" style="width: 200px">
+                <el-option v-for="item in typeData" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="发布时间">
-              <el-date-picker v-model="searchData.published" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
+            <el-form-item label="服务类型" prop="fwxl">
+              <el-select  v-model="searchData.fwxl" placeholder="请选择" id="fwxl" style="width: 200px">
+                <el-option v-for="item in typeDataFw" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="提交时间">
+              <el-date-picker v-model="searchData.startDate" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
+            </el-form-item>
+            <el-form-item label="审核时间">
+              <el-date-picker v-model="searchData.auditStartDate" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="onSubForm1">查询</el-button>
@@ -32,16 +42,17 @@
 
           <el-table :data="tableData" stripe style="width: 100%">
             <el-table-column type="index" label="序号" prop="idx" width="80"></el-table-column>
-            <el-table-column prop="title" label="标题"></el-table-column>
-            <el-table-column prop="unit" label="发布单位"></el-table-column>
-            <el-table-column prop="types" label="文章类型" width="180"></el-table-column>
-            <el-table-column prop="stated" label="发布/关闭" width="180"></el-table-column>
-            <el-table-column prop="published" label="发布时间" width="180"></el-table-column>
+            <el-table-column prop="organUnit" label="需求项目单位"></el-table-column>
+            <el-table-column prop="organCode" label="需求项目编码"></el-table-column>
+            <el-table-column prop="fwxl" label="服务类型" :formatter="formatterFW"></el-table-column>
+            <el-table-column prop="organName" label="需求项目名称"></el-table-column>
+            <el-table-column prop="startDate" label="提交时间"></el-table-column>
+            <el-table-column prop="auditStartDate" label="审核时间"></el-table-column>
+            <el-table-column prop="auditState" label="审核状态" :formatter="formatter"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
-                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button size="mini" type="primary" @click="handleDetail(scope.$index, scope.row)">查看</el-button>
-                <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                <el-button size="mini" @click="handleDetail(scope.$index, scope.row)" v-if="scope.row.auditState != 1">查看</el-button>
+                <el-button size="mini" @click="handleExamine(scope.$index, scope.row)" v-if="scope.row.auditState == 1">审核</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -58,33 +69,26 @@
 <script>
   import pageNation from '@/components/pageNation.vue';
   export default {
-    name:"contract",
+    name:"demandManagement",
     data(){
       return{
         newsData: '',
         searchData: {
           title: '',
-          unit: '',
-          types: '',
           published: ''
         },
-        newsOptions: [
-          {
-            typeVal: '选项1',
-            label: '黄金糕'
-          },
-          {
-            typeVal: '选项2',
-            label: '双皮奶'
-          },
-          {
-            typeVal: '选项3',
-            label: '蚵仔煎'
-          }
-        ],
         tableData: '', //列表总数据
-        resourceUrl:{url:"/news1"},
-//        published: [new Date(2018, 8, 10, 0, 0), new Date(2018, 10, 1, 0, 0)],
+        resourceUrl:{url:"/demandManagement"},
+        typeData: [{value: '1', label: '项目待审核'}, {value: '2', label: '已审核'}, {value: '3', label: '审核不通过'}],
+        typeData1: {'1': '项目待审核', '2': '已审核',  '3': '审核不通过'},
+        typeDataFw: [
+          {value: '1', label: '商业秘密法律服务'},
+          {value: '2', label: '商标法律服务'},
+          {value: '3', label: '专利法律服务'},
+          {value: '4', label: '著作权法律服务'},
+          {value: '5', label: '其他法律服务'}
+        ],
+        typeDataFw1: {'1': '商业秘密法律服务', '2': '商标法律服务', '3': '专利法律服务', '4': '著作权法律服务', '5': '其他法律服务'},
       }
     },
     components:{
@@ -93,30 +97,49 @@
     mounted(){
     },
     methods:{
-      //表格操作事件
-      handleEdit(index, row) {
-        console.log(index, row);
-      },
+      // 表格操作事件
       handleDetail(index, row) {
-        console.log(index, row);
+        this.$router.push({
+          name: 'demandDetail',
+          query:{
+            code : 1
+          }
+        });
       },
-      handleDelete(index, row) {
-        console.log(index, row);
+      // 审核
+      handleExamine(index, row) {
+        this.$router.push({
+          name: 'demandDetail',
+          query:{
+            code : 2
+          }
+        });
       },
-      //列表数据
+
+      //类型判断（服务类型）
+      formatterFW(row, column,cellValue,index) {
+        return cellValue = this.typeDataFw1[cellValue];
+      },
+      //类型判断（审核状态）
+      formatter(row, column,cellValue,index) {
+        return cellValue = this.typeData1[cellValue];
+      },
+      // 列表数据
       listData(data){
         this.tableData = data;
+//        console.log("data-------"+JSON.stringify(data)) // JS中[object object]取值
+
       },
-     //搜索事件
+      // 搜索事件
       onSubForm1() {
         this.$refs.myChid.setNewsApi();
-      },
+      }
     }
   }
 </script>
 
 <style lang="less">
-  #contract{
+  #demandManagement{
     zoom: 0.9;
   }
   .el-breadcrumb{

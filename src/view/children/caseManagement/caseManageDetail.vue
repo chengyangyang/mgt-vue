@@ -15,38 +15,38 @@
                 <td colspan="4">基本信息</td>
               </tr>
               <tr>
-                <td class="w150" style="line-height: 20px;">需求项目名称 :</td>
-                <td class="w350" id="organName">一种奥克托今颗粒表面粗糙度检测方法</td>
-                <td class="w150">需求项目编码: </td>
-                <td class="w350" id="orangeCode"></td>
+                <td class="w150" style="line-height: 20px;">服务机构 :</td>
+                <td class="w350" id="companyName">8月2号，服务提供单位8月2号，服务提供单位</td>
+                <td class="w150">服务对象: </td>
+                <td class="w350" id="object"></td>
               </tr>
               <tr>
-                <td class="w150">竞价截止时间 : </td>
-                <td class="w350" id="endTime">2018-07-19 16:41:08</td>
-                <td class="w150">需求单位 : </td>
-                <td class="w350" id="organUnit">小米科技</td>
+                <td class="w150">受理时间 : </td>
+                <td class="w350" id="acceptTime">2018-07-19 16:41:08</td>
+                <td class="w150">结案时间 : </td>
+                <td class="w350" id="caseTime">小米科技</td>
               </tr>
               <tr>
-                <td class="w150">联系人: </td>
-                <td class="w350" id="constantor">王思聪</td>
-                <td class="w150">联系电话: </td>
-                <td class="w350" id="constantPhone">15689898898</td>
+                <td class="w150">案件名称: </td>
+                <td class="w350" id="name">王思聪</td>
+                <td class="w150">案件类型: </td>
+                <td class="w350" id="type">15689898898</td>
               </tr>
               <tr>
-                <td class="w150">联系地址: </td>
-                <td class="w350" colspan="3" id="constantAddress"></td>
+                <td class="w150">案情简介: </td>
+                <td class="w350" colspan="3" id="introduce"></td>
               </tr>
               <tr>
-                <td class="w150">需求项目描述: </td>
-                <td colspan="3" class="organDescribe" id="priceDetails" >十多个个人</td>
+                <td class="w150">案件要点分析: </td>
+                <td colspan="3" class="organDescribe" id="analysis" >十多个个人</td>
               </tr>
               <tr>
-                <td class="w150">服务要求: </td>
-                <td colspan="3" class="serviceAsk" id="serviceAsk" >111111111111</td>
+                <td class="w150">案件结果: </td>
+                <td colspan="3" class="serviceAsk" id="result" >111111111111</td>
               </tr>
               <tr>
-                <td class="w150">需求项目材料: </td>
-                <td colspan="3" class="organMaterial" id="organMaterial" ></td>
+                <td class="w150">适用法规: </td>
+                <td colspan="3" class="organMaterial" id="rule" ></td>
               </tr>
               <tr>
                 <td colspan="4">审核信息</td>
@@ -62,12 +62,6 @@
               <tr>
                 <td class="w150">审核日期 : </td>
                 <td class="w340" id="auditDate" colspan="3"></td>
-              </tr>
-              <tr>
-                <td class="w150 needic_content" style="display: none;">需求图片 : </td>
-                <td colspan="3" class="needPic needic_content"  style="display: none;">
-                  <ul name="aptProof_img"></ul>
-                </td>
               </tr>
             </table>
             <div class="goods-form-button" style="width:170px;margin: 50px auto 0;">
@@ -140,6 +134,7 @@
       margin: 10px;
       border: 1px solid #dee5f1;
       .detail {
+        font-size: 14px;
         .title {
           border-bottom: 1px solid #dee5f1;
           font-size: 16px;
@@ -154,7 +149,7 @@
             border: 1px solid #CCC;
             padding: 0 10px;
             width: 800px;
-            font-size: 14px;
+            font-size: 16px;
             color: #333;
           }
           table td.w150 {
