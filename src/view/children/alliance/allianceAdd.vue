@@ -92,7 +92,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   #news1{
     zoom: 0.9;
   }

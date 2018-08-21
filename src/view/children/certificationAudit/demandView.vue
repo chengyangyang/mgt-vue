@@ -81,7 +81,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   #demandView{
     width: 100%;
     table{

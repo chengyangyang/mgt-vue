@@ -218,7 +218,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   #news2{
   .tableWrap{
     padding: 10px 15px;

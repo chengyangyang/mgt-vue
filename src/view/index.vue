@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 #indexPage {
   width: 100%;
   height: 100%;
