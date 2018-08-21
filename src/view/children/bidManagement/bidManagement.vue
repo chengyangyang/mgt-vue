@@ -118,7 +118,7 @@
       },
       // 搜索事件
       onSubForm1() {
-        this.$refs.myChid.setNewsApi();
+        this.$refs.myChid.setNewsApi();   // 执行子组件的方法
       }
     }
   }
