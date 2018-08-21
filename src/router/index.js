@@ -146,6 +146,11 @@ export default new Router({
           component: resolve => require(['@/view/children/contract/contract'], resolve)
         },
         {
+          path: '/contractDetail', // 合同备案详情
+          name: 'contractDetail',
+          component: resolve => require(['@/view/children/contract/contractDetail'], resolve)
+        },
+        {
           path: '/news3',
           name: 'news3',
           component: resolve => require(['@/view/children/news3'], resolve)
