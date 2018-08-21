@@ -106,7 +106,7 @@
 </script>
 
 <style lang="less">
-  #news1{
+  #alliance{
     zoom: 0.9;
   }
   .el-breadcrumb{

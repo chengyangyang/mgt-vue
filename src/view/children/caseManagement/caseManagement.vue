@@ -1,5 +1,5 @@
 <template>
-  <div id="news1">
+  <div id="caseManagement">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/#/index' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>新闻资讯</el-breadcrumb-item>
@@ -58,7 +58,7 @@
 <script>
   import pageNation from '@/components/pageNation.vue';
   export default {
-    name:"news1",
+    name:"caseManagement",
     data(){
       return{
         newsData: '',
@@ -116,7 +116,7 @@
 </script>
 
 <style lang="less">
-  #news1{
+  #caseManagement{
     zoom: 0.9;
   }
   .el-breadcrumb{
@@ -140,7 +140,7 @@
       .detail {
         padding: 20px 0;
         th.is-leaf{
-          background: #409EFF;
+          background: #409EFF!important;
           color: #ffffff;
         }
         .page-turn{

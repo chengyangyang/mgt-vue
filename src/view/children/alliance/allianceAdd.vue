@@ -93,7 +93,7 @@
 </script>
 
 <style lang="less">
-  #news1{
+  #allianceAdd{
     zoom: 0.9;
   }
   .el-breadcrumb{
