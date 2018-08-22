@@ -30,6 +30,10 @@ export default new Router({
   // mode:"history",
   routes: [
     {
+      path:'/',
+      redirect:'/login'
+    },
+    {
       path: '/leftNav',
       name: 'leftNav',
       component: resolve => require(['@/components/leftNav'], resolve),
@@ -154,6 +158,26 @@ export default new Router({
           path: '/news3',
           name: 'news3',
           component: resolve => require(['@/view/children/news3'], resolve)
+        },
+        {//系统管理
+          path: '/msgManage',
+          name: 'msgManage',
+          component: resolve => require(['@/view/children/sysManage/msgManage'], resolve)
+        },
+        {
+          path: '/changePsw',
+          name: 'changePsw',
+          component: resolve => require(['@/view/children/sysManage/changePsw'], resolve)
+        },
+        {
+          path: '/roleManage',
+          name: 'roleManage',
+          component: resolve => require(['@/view/children/sysManage/roleManage'], resolve)
+        },
+        {
+          path: '/userManage',
+          name: 'userManage',
+          component: resolve => require(['@/view/children/sysManage/userManage'], resolve)
         },
         {
           // 权限页面
