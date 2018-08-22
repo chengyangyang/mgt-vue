@@ -2,13 +2,13 @@
     <Card>
         <Row style="border-bottom:1px solid #dee5f1; padding-bottom:10px;">
             <Col span="5">
-                <Button type="primary" icon="md-add">添加新闻资讯</Button>         
+                <Button type="primary" icon="md-add">添加新闻资讯</Button>
             </Col>
             <Col span="6" offset="9" >
                 <Input type="text" v-model="search" ></Input>
             </Col>
             <Col span="3" offset="1">
-                <Button type="primary">查询</Button>         
+                <Button type="primary">查询</Button>
             </Col>
         </Row>
         <el-table
