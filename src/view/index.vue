@@ -20,14 +20,23 @@ export default {
   components:{
   },
   mounted(){
-    this.setNewsApi()
+    // this.setNewsApi()
+    this.logout();
   },
   methods:{
-    setNewsApi: function() {
-      this.$http.post("/news", "type=top&key=123456").then(res => {
-        this.newsListShow = res.data.data;
-      });
-    }
+    // setNewsApi: function() {
+    //   this.$http.post("/news", "type=top&key=123456").then(res => {
+    //     this.newsListShow = res.data.data;
+    //   });
+    // },
+    logout(){
+      this.service.personData().then(result=>{
+        console.log(result);
+      })
+      //   this.$http.post('/api/mytest/getPerson.action').then(result=>{
+      //   console.log(result.data);
+      // })
+    },
   }
 }
 </script>

@@ -11,6 +11,7 @@ axios.interceptors.request.use(
     config.headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
+    //判断是否存在Token，如果存在的话
     // if(token){
     //   config.params = {'token':token}
     // }

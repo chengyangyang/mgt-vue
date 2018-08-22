@@ -10,16 +10,16 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
-    // proxyTable: {
-    //   '/api': {
-    //     target: 'http://cache.video.iqiyi.com',//后端接口地址
-    //     changeOrigin: true,//是否允许跨越
-    //     pathRewrite: {
-    //       '^/api': '/api',//重写,
-    //     }
-    //   }
-    // },
+    // proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: 'http://192.168.1.68:8090',//后端接口地址
+        changeOrigin: true,//是否允许跨越
+        pathRewrite: {
+          '^/api': '',//重写,
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

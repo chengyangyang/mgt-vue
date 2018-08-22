@@ -17,8 +17,9 @@
 ## 目录结构介绍 ##
 
 	|-- build                            // webpack配置文件
-	|   |-- webpack.base.conf.js                   // 打包依赖路径
+	|   |-- webpack.base.conf.js                   // 打包依赖路径 output输出路径为config中的index.js 如：build{ index:"",assetsRoot:"",assetsSubDirectory:"",assetsPublicPath:"" --index引入文件路径}
 	|-- config                           // 项目打包路径
+	|   |-- index                   // build配置 proxyTable代理配置
 	|-- src                              // 源码目录
 	|   |-- components                   // 组件
 	|           |-- leftNav.vue           // 公共侧边栏
@@ -84,8 +85,8 @@
 ```JavaScript
 {
     // 富文本编辑器组件
-    path: '/editor',
-    component: resolve => require(['../components/page/VueEditor.vue'], resolve) 
+    // path: '/editor',
+    // component: resolve => require(['../components/page/VueEditor.vue'], resolve) 
 }
 ```
 
