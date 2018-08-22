@@ -84,3 +84,144 @@ const joinData = function (opt) {
 }
 // mock一组数据
 Mock.mock('/joinSrchlist', /post|get/i, joinData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//需求项目审核
+let demandSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let demandObject = {
+    organUnit: Random.csentence(5, 15), // Random.csentence( min, max )
+    organCode: Random.natural(600, 10000), // Random.natural( min, max )
+    fwxl: Random.integer(1, 5), // Random.cname() 随机生成一个常见的中文姓名
+    organName: Random.csentence(5, 20), // Random.csentence( min, max )
+    startDate: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    auditStartDate: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    auditState: Random.integer(1, 3)
+  }
+  demandSrchlist.push(demandObject)
+}
+// mock一组数据
+const demandData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var demandArticles = demandSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = demandSrchlist.length
+  return {
+    data: demandArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/demandManagement', /post|get/i, demandData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//竞价项目审核
+let bidSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let bidObject = {
+    demandCompany: Random.csentence(5, 15), // Random.csentence( min, max )
+    projectCode: Random.natural(600, 100000), // Random.natural( min, max )
+    fwxl: Random.integer(1, 5), // Random.cname() 随机生成一个常见的中文姓名
+    name: Random.csentence(5, 15), // Random.csentence( min, max )
+    auditDate: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    tenderEndDate: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    remainingDate: Random.datetime(),
+    auditState: Random.integer(1, 3)
+  }
+  bidSrchlist.push(bidObject)
+}
+// mock一组数据
+const bidData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var bidArticles = bidSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = bidSrchlist.length;
+  return {
+    data: bidArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/bidManagement', /post|get/i, bidData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//竞价项目审核详情（竞价方信息）
+let bidMagDetailSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let bidMagDetailObject = {
+    companyName: Random.csentence(5, 15), // Random.csentence( min, max )
+    contact: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    phone: Random.natural(600, 100000), // Random.natural( min, max )
+  }
+  bidMagDetailSrchlist.push(bidMagDetailObject)
+}
+// mock一组数据
+const bidManageDetailData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var bidMagDetailArticles = bidMagDetailSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = bidMagDetailSrchlist.length;
+  return {
+    data: bidMagDetailArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/bidManageDetail', /post|get/i, bidManageDetailData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//服务案例管理
+let caseSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let caseObject = {
+    companyName: Random.csentence(5, 15), // Random.csentence( min, max )
+    name: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    applayTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    approvalTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    states: Random.integer(1, 3), // Random.cname() 随机生成一个常见的中文姓名
+  }
+  caseSrchlist.push(caseObject)
+}
+// mock一组数据
+const caseData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var caseArticles = caseSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = caseSrchlist.length;
+  return {
+    data: caseArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/caseManagement', /post|get/i, caseData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
+
+
+//合同备案管理
+let contractSrchlist = [];
+for (let i = 0; i < 15; i++) {
+  let contractObject = {
+    demandCompany: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    organUnit: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+    organCode: Random.natural(600, 100000),
+    organName: Random.csentence(5, 15), // Random.csentence( min, max )
+    fwxl: Random.integer(1, 5), // 随机产出1-5
+    applayTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    approvalTime: Random.datetime(), // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+    states: Random.integer(1, 4), // Random.cname() 随机生成一个常见的中文姓名
+  }
+  contractSrchlist.push(contractObject)
+}
+// mock一组数据
+const contractData = function (opt) {
+  var page = JSON.parse(opt.body).page;
+  var pageNumber = JSON.parse(opt.body).pageNumber;
+  var contractArticles = contractSrchlist.slice((page - 1) * pageNumber, page * pageNumber);
+  totalPageNum = contractSrchlist.length;
+  return {
+    data: contractArticles,
+    totalPage: totalPageNum
+  }
+}
+// mock一组数据
+Mock.mock('/contract', /post|get/i, contractData) // 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据

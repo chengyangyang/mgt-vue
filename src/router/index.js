@@ -115,9 +115,24 @@ export default new Router({
           component: resolve => require(['@/view/children/demandManagement/demandManagement'], resolve)
         },
         {
+          path: '/demandDetail', // 需求项目审核详情
+          name: 'demandDetail',
+          component: resolve => require(['@/view/children/demandManagement/demandDetail'], resolve)
+        },
+        {
           path: '/bidManagement', // 竞价项目审核
           name: 'bidManagement',
           component: resolve => require(['@/view/children/bidManagement/bidManagement'], resolve)
+        },
+        {
+          path: '/bidManageDetail', // 竞价项目审核详情
+          name: 'bidManageDetail',
+          component: resolve => require(['@/view/children/bidManagement/bidManageDetail'], resolve)
+        },
+        {
+          path: '/biddingInfo', // 竞价项目，竞价方详情
+          name: 'biddingInfo',
+          component: resolve => require(['@/view/children/bidManagement/biddingInfo'], resolve)
         },
         {
           path: '/caseManagement', // 服务案例审核
@@ -125,9 +140,19 @@ export default new Router({
           component: resolve => require(['@/view/children/caseManagement/caseManagement'], resolve)
         },
         {
+          path: '/caseManageDetail', // 服务案例详情
+          name: 'caseManageDetail',
+          component: resolve => require(['@/view/children/caseManagement/caseManageDetail'], resolve)
+        },
+        {
           path: '/contract', // 合同备案审核
           name: 'contract',
           component: resolve => require(['@/view/children/contract/contract'], resolve)
+        },
+        {
+          path: '/contractDetail', // 合同备案详情
+          name: 'contractDetail',
+          component: resolve => require(['@/view/children/contract/contractDetail'], resolve)
         },
         {
           path: '/news3',

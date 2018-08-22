@@ -25,12 +25,20 @@ Vue.prototype.$get = get
 Vue.prototype.$patch = patch
 Vue.prototype.$put = put
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false  // 防止生产提示
 Vue.config.silent = true// 去除不必要的警告
 Vue.config.devtools = true// 是否允许检查代码
 
 Vue.use(ElementUI)
 Vue.use(iView)
+//前端身份失效检测
+// beforeEnter:(to, from, next)=>{
+//   if(!localStorage.getItem('token')){
+//     next({ path: '/login' });
+//   }else{
+//     next();
+//   }
+// }
 
 // 使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
