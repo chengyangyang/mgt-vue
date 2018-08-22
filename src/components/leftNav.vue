@@ -71,23 +71,23 @@ export default {
       navList: [
         {
           icon: 'el-icon-setting',
-          path: '',
+          path: 'sysManage',
           title: '系统管理',
           subs:[
             {
-              path: '',
+              path: '/userManage',
               title: '审核员管理'
             },
             {
-              path: '',
+              path: '/roleManage',
               title: '角色管理'
             },
             {
-              path: '',
+              path: '/changePsw',
               title: '修改密码'
             },
             {
-              path: '',
+              path: '/msgManage',
               title: '消息管理'
             }
           ]
