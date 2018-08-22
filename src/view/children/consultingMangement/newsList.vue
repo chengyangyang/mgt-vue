@@ -221,10 +221,13 @@
         }
       .newsTable{
         th{
-          padding: 3px 0.5rem!important;
+          background: #409EFF;
+          color: #ffffff;
+          border:none;
         }
         td{
-          padding: 3px 0.5rem!important;
+          /*padding: 3px 0.5rem!important;*/
+          text-align: center;
         }
       }
       }

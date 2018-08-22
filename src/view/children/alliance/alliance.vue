@@ -22,7 +22,7 @@
             </el-form-item>
           </el-form>
 
-          <el-table :data="tableData" stripe style="width: 100%">
+          <el-table :data="tableData"style="width: 100%">
             <el-table-column type="index" label="序号" prop="idx" width="80"></el-table-column>
             <el-table-column prop="title" label="制度名称"></el-table-column>
             <el-table-column prop="published" label="发布时间"></el-table-column>

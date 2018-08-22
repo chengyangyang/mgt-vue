@@ -31,6 +31,14 @@ Vue.config.devtools = true// 是否允许检查代码
 
 Vue.use(ElementUI)
 Vue.use(iView)
+//前端身份失效检测
+// beforeEnter:(to, from, next)=>{
+//   if(!localStorage.getItem('token')){
+//     next({ path: '/login' });
+//   }else{
+//     next();
+//   }
+// }
 
 // 使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {

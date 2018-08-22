@@ -71,11 +71,11 @@
               label="序号">
             </el-table-column>
             <el-table-column
-              width="170" header-align="center"
+              width="70" header-align="center"
               label="用户名"  property="userName">
             </el-table-column>
             <el-table-column
-              width="130" header-align="center"
+              width="100" header-align="center"
               label="发布单位"  property="publishUnit">
             </el-table-column>
             <el-table-column
@@ -237,10 +237,13 @@
   }
   .newsTable{
   th{
-    padding: 3px 0.5rem!important;
+    background: #409EFF;
+    color: #ffffff;
+    border:none;
   }
   td{
-    padding: 3px 0.5rem!important;
+    /*padding: 3px 0.5rem!important;*/
+    text-align: center;
   }
   }
   }
