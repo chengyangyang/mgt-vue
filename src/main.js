@@ -11,6 +11,7 @@ import './mock/mock.js'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// import apiConfig from '../config/api.config'
 // 导入iview组件
 import iView from 'iview' // 导入组件库
 import 'iview/dist/styles/iview.css' // 导入样式
