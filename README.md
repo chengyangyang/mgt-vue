@@ -52,11 +52,11 @@
 	|           |-- contract             //合同备案管理
   	|             |-- contract.vue         //合同备案列表页
   	|             |-- contractDetail.vue   //合同备案详情页面
-	|			     |-- sysMangement             //系统管理
-  	|             |-- changePsw.vue         //修改密码
-  	|             |-- msgManage.vue  		消息管理
-  	|             |-- roleManage.vue  		角色管理
-  	|             |-- userManage.vue  		审核员管理
+	|			     |-- sysMangement          //系统管理
+  	|             |-- changePsw.vue       //修改密码
+  	|             |-- msgManage.vue  		  //消息管理
+  	|             |-- roleManage.vue  		//角色管理
+  	|             |-- userManage.vue  		//审核员管理
 	|     |-- index.vue       // 首页
 	|     |-- login.vue         // 登录
 	|   |-- App.vue                      // 页面入口文件
