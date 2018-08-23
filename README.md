@@ -34,7 +34,25 @@
 	|           |-- consultingMangement             //资讯管理
   	|             |-- news2.vue         //资讯管理列表页
   	|             |-- newsAdd.vue       //咨询添加页面
-	|			|-- sysMangement             //系统管理
+	|           |-- alliance             //联盟管理
+  	|             |-- alliance.vue         //联盟管理列表页
+  	|             |-- allianceAdd.vue      //联盟管理添加页面
+  	|             |-- joinSrchlist.vue     //加盟机构列表页
+  	|             |-- joinAdd.vue         //加盟机构添加页面
+	|           |-- demandManagement     //需求项目管理
+  	|             |-- demandManagement.vue  //需求项目列表页
+  	|             |-- demandDetail.vue      //需求项目详情页面
+	|           |-- bidManagement       //竞价项目管理
+  	|             |-- bidManagement.vue     //需求项目列表页
+  	|             |-- bidManageDetail.vue   //需求项目详情页面
+  	|             |-- biddingInfo.vue       //需求项目竞价方详情页面
+	|           |-- caseManagement       //服务案例管理
+  	|             |-- caseManagement.vue     //服务案例列表页
+  	|             |-- caseManageDetail.vue   //服务案例详情页面
+	|           |-- contract             //合同备案管理
+  	|             |-- contract.vue         //合同备案列表页
+  	|             |-- contractDetail.vue   //合同备案详情页面
+	|			     |-- sysMangement             //系统管理
   	|             |-- changePsw.vue         //修改密码
   	|             |-- msgManage.vue  		消息管理
   	|             |-- roleManage.vue  		角色管理
