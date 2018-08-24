@@ -65,7 +65,7 @@ module.exports = {
      * Source Maps
      */
 
-    productionSourceMap: true,
+    productionSourceMap: false,   // 值为false，打包后文件体积可以减少百分之八十
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 
