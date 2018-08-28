@@ -96,7 +96,7 @@ export default {
 .login-box{
   position:absolute;
   width:1190px;           /*modify by sunfang 1100px; */
-  height:600px;
+  height:570px;
   top:50%;
   left:50%;
   margin-top:-300px;
