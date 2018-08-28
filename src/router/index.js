@@ -165,6 +165,11 @@ export default new Router({
           component: resolve => require(['@/view/children/sysManage/msgManage'], resolve)
         },
         {
+          path: '/addMsg',
+          name: 'addMsg',
+          component: resolve => require(['@/view/children/sysManage/addMsg'], resolve)
+        },
+        {
           path: '/changePsw',
           name: 'changePsw',
           component: resolve => require(['@/view/children/sysManage/changePsw'], resolve)
@@ -175,9 +180,30 @@ export default new Router({
           component: resolve => require(['@/view/children/sysManage/roleManage'], resolve)
         },
         {
+          path: '/addRole',
+          name: 'addRole',
+          component: resolve => require(['@/view/children/sysManage/addRole'], resolve)
+        },
+        {
           path: '/userManage',
           name: 'userManage',
           component: resolve => require(['@/view/children/sysManage/userManage'], resolve)
+        },
+        {
+          path: '/addUser',
+          name: 'addUser',
+          component: resolve => require(['@/view/children/sysManage/addUser'], resolve)
+        },
+        //互动交流
+        {
+          path: '/interactList',
+          name: 'interactList',
+          component: resolve => require(['@/view/children/interact/interact'], resolve)
+        },
+        {
+          path: '/interactListDetail',
+          name: 'interactListDetail',
+          component: resolve => require(['@/view/children/interact/detail'], resolve)
         },
         {
           // 权限页面

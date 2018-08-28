@@ -178,6 +178,17 @@ export default {
               title: '合同备案管理'
             }
           ]
+        },
+        {
+          icon: 'el-icon-tickets',
+          path: 'interactList',
+          title: '互动交流',
+          subs: [
+            {
+              path: 'interactList',
+              title: '互动交流'
+            }
+          ]
         }
       ]
     }
