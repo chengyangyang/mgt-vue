@@ -204,31 +204,30 @@
   #serviceDemand{
   .tableWrap{
     padding: 10px 15px;
-  .tableBox{
-    background: #fff;
-    padding: 0 20px;
-    margin: 10px;
-    border: 1px solid #dee5f1;
-  .searchBar{
-    padding: 15px 0;
-  .inputDiv{
-    display: inline-block;
-    margin: 5px;
-    /*margin-left: 10px !important;*/
-  }
+    .tableBox{
+      background: #fff;
+      padding: 0 20px;
+      margin: 10px;
+      border: 1px solid #dee5f1;
+    .searchBar{
+      padding: 15px 0;
+    .inputDiv{
+      display: inline-block;
+      margin: 5px;
+      /*margin-left: 10px !important;*/
+    }
   }
   .newsTable{
-  th{
-    background: #409EFF;
-    color: #ffffff;
-    border:none;
-  }
-  td{
-    /*padding: 3px 0.5rem!important;*/
-    text-align: center;
-  }
-  }
-  }
+    th{
+      background: #409EFF;
+      color: #ffffff;
+      border:none;
+    }
+    td{
+      /*padding: 3px 0.5rem!important;*/
+      text-align: center;
+    }
+   }
   }
   }
   .block{
@@ -238,9 +237,10 @@
     padding-left: 280px !important;
   }
   .el-input{
-    width: 170px;
+    width: 170px !important;
   }
   .el-date-editor--datetimerange.el-input, .el-date-editor--datetimerange.el-input__inner{
     width: 375px;
+  }
   }
 </style>

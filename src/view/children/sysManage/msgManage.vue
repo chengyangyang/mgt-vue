@@ -11,7 +11,7 @@
               <el-input v-model="search" size="small"></el-input>
             </Col>
             <Col span="3" offset="1">
-                <Button type="primary">查询</Button>         
+                <Button type="primary">查询</Button>
             </Col>
         </Row>
         <el-table

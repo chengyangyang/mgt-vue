@@ -11,12 +11,14 @@ import './mock/mock.js'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// import apiConfig from '../config/api.config'
 // 导入iview组件
 import iView from 'iview' // 导入组件库
 import 'iview/dist/styles/iview.css' // 导入样式
 
 import './assets/css/common.css'
-import {post, get, patch, put} from './service/http'
+import {post, get, patch, put} from './service/http' //请求拦截模块
+import * as service from './service/server';  //service整个模块引入
 // import service from './service/common'
 
 // 定义全局变量
@@ -24,7 +26,7 @@ Vue.prototype.$post = post
 Vue.prototype.$get = get
 Vue.prototype.$patch = patch
 Vue.prototype.$put = put
-
+Vue.prototype.service = service;
 Vue.config.productionTip = false  // 防止生产提示
 Vue.config.silent = true// 去除不必要的警告
 Vue.config.devtools = true// 是否允许检查代码
@@ -40,7 +42,7 @@ Vue.use(iView)
 //   }
 // }
 
-// 使用钩子函数对路由进行权限跳转
+// 使用钩子函数对路由进行权限跳转  登录路由拦截
 router.beforeEach((to, from, next) => {
   const role = localStorage.getItem('ms_username')
   if (!role && to.path !== '/login') {

@@ -17,8 +17,9 @@
 ## 目录结构介绍 ##
 
 	|-- build                            // webpack配置文件
-	|   |-- webpack.base.conf.js                   // 打包依赖路径
+	|   |-- webpack.base.conf.js                   // 打包依赖路径 output输出路径为config中的index.js 如：build{ index:"",assetsRoot:"",assetsSubDirectory:"",assetsPublicPath:"" --index引入文件路径}
 	|-- config                           // 项目打包路径
+	|   |-- index                   // build配置 proxyTable代理配置
 	|-- src                              // 源码目录
 	|   |-- components                   // 组件
 	|           |-- leftNav.vue           // 公共侧边栏
@@ -33,11 +34,29 @@
 	|           |-- consultingMangement             //资讯管理
   	|             |-- news2.vue         //资讯管理列表页
   	|             |-- newsAdd.vue       //咨询添加页面
-	|			|-- sysMangement             //系统管理
-  	|             |-- changePsw.vue         //修改密码
-  	|             |-- msgManage.vue  		消息管理
-  	|             |-- roleManage.vue  		角色管理
-  	|             |-- userManage.vue  		审核员管理
+	|           |-- alliance             //联盟管理
+  	|             |-- alliance.vue         //联盟管理列表页
+  	|             |-- allianceAdd.vue      //联盟管理添加页面
+  	|             |-- joinSrchlist.vue     //加盟机构列表页
+  	|             |-- joinAdd.vue         //加盟机构添加页面
+	|           |-- demandManagement     //需求项目管理
+  	|             |-- demandManagement.vue  //需求项目列表页
+  	|             |-- demandDetail.vue      //需求项目详情页面
+	|           |-- bidManagement       //竞价项目管理
+  	|             |-- bidManagement.vue     //需求项目列表页
+  	|             |-- bidManageDetail.vue   //需求项目详情页面
+  	|             |-- biddingInfo.vue       //需求项目竞价方详情页面
+	|           |-- caseManagement       //服务案例管理
+  	|             |-- caseManagement.vue     //服务案例列表页
+  	|             |-- caseManageDetail.vue   //服务案例详情页面
+	|           |-- contract             //合同备案管理
+  	|             |-- contract.vue         //合同备案列表页
+  	|             |-- contractDetail.vue   //合同备案详情页面
+	|			     |-- sysMangement          //系统管理
+  	|             |-- changePsw.vue       //修改密码
+  	|             |-- msgManage.vue  		  //消息管理
+  	|             |-- roleManage.vue  		//角色管理
+  	|             |-- userManage.vue  		//审核员管理
 	|     |-- index.vue       // 首页
 	|     |-- login.vue         // 登录
 	|   |-- App.vue                      // 页面入口文件
@@ -84,8 +103,8 @@
 ```JavaScript
 {
     // 富文本编辑器组件
-    path: '/editor',
-    component: resolve => require(['../components/page/VueEditor.vue'], resolve) 
+    // path: '/editor',
+    // component: resolve => require(['../components/page/VueEditor.vue'], resolve) 
 }
 ```
 

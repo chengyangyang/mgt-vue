@@ -1,6 +1,7 @@
 import axios from 'axios'
 // axios.defaults.timeout = 5000;
-axios.defaults.baseURL = ''
+// import apiConfig from '../../config/api.config'
+axios.defaults.baseURL =  ""
 
 // http request 拦截器
 axios.interceptors.request.use(
@@ -10,6 +11,7 @@ axios.interceptors.request.use(
     config.headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
+    //判断是否存在Token，如果存在的话
     // if(token){
     //   config.params = {'token':token}
     // }
