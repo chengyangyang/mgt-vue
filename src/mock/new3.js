@@ -18,8 +18,8 @@ const msgListData = function (opt) {
   // 查询条件
   if (JSON.parse(opt.body).title) {
     newMsgs = newMsgs.filter(item => item.title === JSON.parse(opt.body).title)
-    totalPageNum = msgs.length
   }
+  totalPageNum = msgs.length
   return {
     data: newMsgs,
     totalPage: totalPageNum
@@ -43,8 +43,8 @@ const userListData = function (opt) {
   // 查询条件
   if (JSON.parse(opt.body).title) {
     newUsers = newUsers.filter(item => item.title === JSON.parse(opt.body).title)
-    totalPageNum = users.length
   }
+  totalPageNum = users.length
   return {
     data: newUsers,
     totalPage: totalPageNum
@@ -71,8 +71,8 @@ const interactListData = function (opt) {
   // 查询条件
   if (JSON.parse(opt.body).title) {
     newInteractList = interactList.filter(item => item.title === JSON.parse(opt.body).title)
-    totalPageNum = interactList.length
   }
+  totalPageNum = interactList.length
   return {
     data: newInteractList,
     totalPage: totalPageNum
