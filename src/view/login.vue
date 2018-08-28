@@ -11,9 +11,9 @@
             <el-input type="password" placeholder="password" v-model="ruleForm.password" @keyup.enter.native="submitForm('ruleForm')"></el-input>
           </el-form-item>
           <div class="login-btn" style="text-align: center">
-            <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+            <el-button type="primary" @click="submitForm('ruleForm')" style="left: 5%;width: 90%;">登录</el-button>
           </div>
-          <p style="font-size:12px;line-height:30px;color:#999;">Tips : 用户名和密码随便填。</p>
+          <p style="font-size:12px;line-height:30px;color:#999;padding-left: 5%;margin-top: 20px;">Tips : 用户名和密码随便填。</p>
         </el-form>
         <!--<form id="form">-->
           <!--<div class="form-line username">-->
